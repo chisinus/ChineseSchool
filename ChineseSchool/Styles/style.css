@@ -1,0 +1,18 @@
+﻿.ErrorMessage {
+    color: red;
+}
+
+div {
+    padding-bottom: 10px;
+}
+
+.PageTitle {
+    font-size: large;
+    font-weight:bold;
+}
+
+.SectionTitle {
+    padding-top: 15px;
+    font-size: medium;
+    font-weight:bold;
+}
