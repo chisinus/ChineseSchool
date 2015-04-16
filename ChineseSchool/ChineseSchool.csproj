@@ -38,6 +38,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit">
+      <HintPath>..\..\Components\AjaxControlToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -55,8 +58,12 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Telerik.Web.UI">
+      <HintPath>..\..\Components\Telerik.Web.UI.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin.aspx" />
     <Content Include="Images\LISOCtitle.gif" />
     <Content Include="Login.aspx" />
     <Content Include="Register-not-used.aspx" />
@@ -65,9 +72,19 @@
     <Content Include="Reg_Children.aspx" />
     <Content Include="Reg_Confirmation.aspx" />
     <Content Include="Styles\style.css" />
+    <Content Include="User.aspx" />
+    <Content Include="UserControl\UC_ChildList.ascx" />
+    <Content Include="UserControl\UC_UserInfo.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin.aspx.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin.aspx.designer.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BusinessLogic\CSAgent.cs" />
     <Compile Include="BusinessLogic\Toolbox.cs" />
     <Compile Include="BusinessObjects\ChildData.cs" />
@@ -131,6 +148,30 @@
     </Compile>
     <Compile Include="Reg_Confirmation.aspx.designer.cs">
       <DependentUpon>Reg_Confirmation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SecurePageBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User.aspx.cs">
+      <DependentUpon>User.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User.aspx.designer.cs">
+      <DependentUpon>User.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\UC_ChildList.ascx.cs">
+      <DependentUpon>UC_ChildList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControl\UC_ChildList.ascx.designer.cs">
+      <DependentUpon>UC_ChildList.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\UC_UserInfo.ascx.cs">
+      <DependentUpon>UC_UserInfo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControl\UC_UserInfo.ascx.designer.cs">
+      <DependentUpon>UC_UserInfo.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

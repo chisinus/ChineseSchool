@@ -16,5 +16,12 @@ namespace ChineseSchool.BusinessObjects
             Male = 1,
             Female = 2
         }
+
+        public enum UserTypes
+        {
+            None = 0,
+            Admin = 1,
+            User = 2
+        }
     }
 }

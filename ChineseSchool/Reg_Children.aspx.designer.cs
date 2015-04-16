@@ -22,6 +22,15 @@ namespace ChineseSchool {
         protected global::System.Web.UI.WebControls.Label ctrlMessage;
         
         /// <summary>
+        /// ctrlChildren control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ChineseSchool.UserControl.UC_ChildList ctrlChildren;
+        
+        /// <summary>
         /// Label1 control.
         /// </summary>
         /// <remarks>
@@ -110,6 +119,15 @@ namespace ChineseSchool {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ctrlClass;
+        
+        /// <summary>
+        /// ctrlAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ctrlAdd;
         
         /// <summary>
         /// ctrlSubmit control.

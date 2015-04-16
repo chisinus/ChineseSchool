@@ -50,6 +50,7 @@ namespace ChineseSchool
             user.City = ctrlCity.Text.Trim();
             user.State = new StateData { StateID = Toolbox.StringToInt(ctrlState.SelectedValue) };
             user.PostalCode = ctrlPostalCode.Text.Trim();
+            user.UserType = CSConstants.UserTypes.User;
 
             user.UserID = CSAgent.InsertUser(user, GetSqlConnection());
             if (user.UserID < 0)

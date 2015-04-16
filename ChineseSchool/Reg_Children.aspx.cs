@@ -32,7 +32,7 @@ namespace ChineseSchool
             }
         }
 
-        protected void ctrlSubmit_Click(object sender, EventArgs e)
+        protected void ctrlAdd_Click(object sender, EventArgs e)
         {
             if (!ValidateData())
                 return;
@@ -43,9 +43,40 @@ namespace ChineseSchool
             child.ChildLastname = ctrlLastname.Text.Trim();
             child.Gender = (CSConstants.Genders)Toolbox.StringToInt(ctrlGender.SelectedValue);
             child.YOB = Toolbox.StringToInt(ctrlYOB.Text.Trim());
+            child.PickedClasses.Add(CSAgent.GetClassInfo(Toolbox.StringToInt(ctrlClass.SelectedValue), GetSqlConnection()));
 
             UserData user = GetCurrentUser();
+            user.Children.Add(child);
+            SetCurrentUser(user);
 
+            ctrlChildren.UpdateUI(user);
+        }
+
+        private bool ValidateData()
+        {
+            if (Toolbox.IsEmpty(ctrlFirstname.Text) || Toolbox.IsEmpty(ctrlLastname.Text) || (ctrlClass.SelectedIndex == 0))
+            {
+                ctrlMessage.Text = CSMessage.ERR_RequiredField;
+                return false;
+            }
+
+            int yob = Toolbox.StringToInt(ctrlYOB.Text.Trim());
+            if (yob < 0)
+            {
+                ctrlMessage.Text = "Please enter a valid Year of Birth.";
+                return false;
+            }
+
+            return true;
+        }
+
+        protected void ctrlSubmit_Click(object sender, EventArgs e)
+        {
+            UserData user = GetCurrentUser();
+
+            if (user.Children.Count == 0) Response.Redirect("Reg_Confirmation.aspx");
+
+            {
             SqlTransaction tran = GetSqlConnection().BeginTransaction();
 
             child.ChildID = CSAgent.InsertChild(user.UserID, child, GetSqlConnection(), tran);
@@ -75,25 +106,6 @@ namespace ChineseSchool
             user.Children.Add(child);
             SetCurrentUser(user);
 
-            Response.Redirect("Reg_Confirmation.aspx");
-        }
-
-        private bool ValidateData()
-        {
-            if (Toolbox.IsEmpty(ctrlFirstname.Text) || Toolbox.IsEmpty(ctrlLastname.Text) || (ctrlClass.SelectedIndex == 0))
-            {
-                ctrlMessage.Text = CSMessage.ERR_RequiredField;
-                return false;
-            }
-
-            int yob = Toolbox.StringToInt(ctrlYOB.Text.Trim());
-            if (yob < 0)
-            {
-                ctrlMessage.Text = "Please enter a valid Year of Birth.";
-                return false;
-            }
-
-            return true;
         }
 
         protected void ctrlCancel_Click(object sender, EventArgs e)

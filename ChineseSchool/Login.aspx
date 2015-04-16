@@ -11,6 +11,5 @@
         <br /><br />
         <asp:Button runat="server" ID="ctrlLogin" OnClick="ctrlLogin_Click" Text="Log in" />
         <asp:Button runat="server" ID="ctrlRegister" OnClick="ctrlRegister_Click" Text="Register" />
-        <asp:Button runat="server" ID="ctrlExport" OnClick="ctrlExport_Click" Text="Export" />
     </div>
 </asp:Content>

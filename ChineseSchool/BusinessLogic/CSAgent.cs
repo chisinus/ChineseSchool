@@ -95,5 +95,17 @@ namespace ChineseSchool.BusinessLogic
 
             return Toolbox.GetDBDataTable("GetUserList", "procUser_GetUserList", conn);
         }
+
+        internal static ClassData GetClassInfo(int classID, SqlConnection conn)
+        {
+            if ((classID <= 0) || (conn == null)) return new ClassData { Error = true };
+
+            SqlParameter[] parameters = new SqlParameter[] 
+												{ 
+													new SqlParameter("@ClassID", classID)
+												};
+
+            return Toolbox.GetDBObject<ClassData>("GetClassInfo", "procClass_GetClassInfo", conn, parameters);
+        }
     }
 }

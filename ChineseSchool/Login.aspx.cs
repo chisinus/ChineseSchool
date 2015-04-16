@@ -22,9 +22,6 @@ namespace ChineseSchool
 
         protected void ctrlLogin_Click(object sender, EventArgs e)
         {
-            ctrlMessage.Text = "Not implemented.";
-            return;
-
             if (!ValidateData())
                 return;
 
@@ -36,6 +33,8 @@ namespace ChineseSchool
             }
 
             SetCurrentUser(ud);
+
+            Response.Redirect((ud.UserType == CSConstants.UserTypes.Admin)? "Admin.aspx" : "User.aspx");
         }
 
         private bool ValidateData()
@@ -58,44 +57,6 @@ namespace ChineseSchool
         protected void ctrlRegister_Click(object sender, EventArgs e)
         {
             Response.Redirect("Reg_Account.aspx");
-        }
-
-        protected void ctrlExport_Click(object sender, EventArgs e)
-        {
-            DataTable dataTable = CSAgent.GetUserList(GetSqlConnection());
-
-            StringBuilder builder = new StringBuilder();
-            List<string> columnNames = new List<string>();
-            List<string> rows = new List<string>();
-
-            foreach (DataColumn column in dataTable.Columns)
-            {
-                columnNames.Add(column.ColumnName);
-            }
-
-            builder.Append(string.Join(",", columnNames.ToArray())).Append("\n");
-
-            foreach (DataRow row in dataTable.Rows)
-            {
-                List<string> currentRow = new List<string>();
-
-                foreach (DataColumn column in dataTable.Columns)
-                {
-                    object item = row[column];
-
-                    currentRow.Add(item.ToString());
-                }
-
-                rows.Add(string.Join(",", currentRow.ToArray()));
-            }
-
-            builder.Append(string.Join("\n", rows.ToArray()));
-
-            Response.Clear();
-            Response.ContentType = "text/csv";
-            Response.AddHeader("Content-Disposition", "attachment;filename=export.csv");
-            Response.Write(builder.ToString());
-            Response.End();
         }
     }
 }

@@ -22,6 +22,7 @@ namespace ChineseSchool.BusinessObjects
         public string City { get; set; }
         public StateData State { get; set; }
         public string PostalCode { get; set; }
+        public CSConstants.UserTypes UserType { get; set; }
 
         public List<ChildData> Children { get; set; }
         #endregion properties
@@ -48,6 +49,7 @@ namespace ChineseSchool.BusinessObjects
             City  = Toolbox.GetDBValue<string>(reader, "City");
             State = new StateData(reader);
             PostalCode = Toolbox.GetDBValue<string>(reader, "PostalCode");
+            UserType = (CSConstants.UserTypes)Toolbox.GetDBValue<int>(reader, "UserTypeID");
 
             AddItem(reader);
         }

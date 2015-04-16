@@ -1,9 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Includes/ChineseSchool.Master" AutoEventWireup="true" CodeBehind="Reg_Children.aspx.cs" Inherits="ChineseSchool.Reg_Children" %>
+
+<%@ Register Src="~/UserControl/UC_ChildList.ascx" TagPrefix="uc1" TagName="UC_ChildList" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:Label runat="server" ID="ctrlMessage" CssClass="Error"></asp:Label>
-    <div class="PageTitle">Create Account</div>
+    <div class="PageTitle">Create Account - Add Children</div>
+    
+    <uc1:UC_ChildList runat="server" ID="ctrlChildren" />
+
     <div class="SectionTitle">Child Information</div>
     <div>
         <asp:Label ID="Label1" runat="server">Child First Name: </asp:Label>
@@ -30,7 +36,8 @@
         <asp:DropDownList runat="server" ID="ctrlClass" />
     </div>
     <div>
-        <asp:Button runat="server" ID="ctrlSubmit" OnClick="ctrlSubmit_Click" Text="Submit" />
+        <asp:Button runat="server" ID="ctrlAdd" OnClick="ctrlAdd_Click" Text="Add" />
+        <asp:Button runat="server" ID="ctrlSubmit" OnClick="ctrlSubmit_Click" Text="Finish" />
         <asp:Button runat="server" ID="ctrlCancel" OnClick="ctrlCancel_Click" Text="Cancel" />
     </div>
 </asp:Content>

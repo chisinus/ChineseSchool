@@ -24,19 +24,20 @@ namespace ChineseSchool
         }
 
         #region sessoin
-        protected void SetCurrentUser(UserData ud)
-        {
-            Session["CurrentUser"] = ud;
-        }
-
+        const string SESSION_CURRENTUSER = "CurrentUser";
         protected UserData GetCurrentUser()
         {
-            if (Session["CurrentUser"] == null)
-                GoToLoginPage();
-            
-            return (UserData)Session["CurrentUser"];
+            if (Session[SESSION_CURRENTUSER] == null)
+                Response.Redirect("Login.aspx");
+
+            return (UserData)Session[SESSION_CURRENTUSER];
         }
-        #endregion session
+
+        protected void SetCurrentUser(UserData user)
+        {
+            Session[SESSION_CURRENTUSER] = user;
+        }
+        #endregion sessoin
 
         protected void GoToLoginPage()
         {
