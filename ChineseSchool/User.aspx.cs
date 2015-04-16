@@ -16,5 +16,15 @@ namespace ChineseSchool
             ctrlUserInfo.UpdateUI(GetCurrentUser());
             ctrlChildren.UpdateUI(GetCurrentUser());
         }
+
+        protected void ctrlEdit_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Reg_Account.aspx");
+        }
+
+        protected void ctrlLogout_Click(object sender, EventArgs e)
+        {
+            GoToLoginPage();
+        }
     }
 }

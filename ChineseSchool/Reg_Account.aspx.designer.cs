@@ -22,15 +22,6 @@ namespace ChineseSchool {
         protected global::System.Web.UI.WebControls.Label ctrlMessage;
         
         /// <summary>
-        /// Label1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
-        
-        /// <summary>
         /// ctrlFirstname control.
         /// </summary>
         /// <remarks>
@@ -38,15 +29,6 @@ namespace ChineseSchool {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox ctrlFirstname;
-        
-        /// <summary>
-        /// Label2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
         /// ctrlLastname control.
@@ -58,15 +40,6 @@ namespace ChineseSchool {
         protected global::System.Web.UI.WebControls.TextBox ctrlLastname;
         
         /// <summary>
-        /// Label3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
-        
-        /// <summary>
         /// ctrlEmail control.
         /// </summary>
         /// <remarks>
@@ -76,15 +49,6 @@ namespace ChineseSchool {
         protected global::System.Web.UI.WebControls.TextBox ctrlEmail;
         
         /// <summary>
-        /// Label4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label4;
-        
-        /// <summary>
         /// ctrlEmail2 control.
         /// </summary>
         /// <remarks>
@@ -92,15 +56,6 @@ namespace ChineseSchool {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox ctrlEmail2;
-        
-        /// <summary>
-        /// Label5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label5;
         
         /// <summary>
         /// ctrlPhone control.
@@ -121,15 +76,6 @@ namespace ChineseSchool {
         protected global::System.Web.UI.WebControls.TextBox ctrlPhoneExt;
         
         /// <summary>
-        /// Label6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label6;
-        
-        /// <summary>
         /// ctrlAddress1 control.
         /// </summary>
         /// <remarks>
@@ -137,15 +83,6 @@ namespace ChineseSchool {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox ctrlAddress1;
-        
-        /// <summary>
-        /// Label7 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label7;
         
         /// <summary>
         /// ctrlAddress2 control.
@@ -157,15 +94,6 @@ namespace ChineseSchool {
         protected global::System.Web.UI.WebControls.TextBox ctrlAddress2;
         
         /// <summary>
-        /// Label8 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label8;
-        
-        /// <summary>
         /// ctrlCity control.
         /// </summary>
         /// <remarks>
@@ -173,15 +101,6 @@ namespace ChineseSchool {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox ctrlCity;
-        
-        /// <summary>
-        /// Label9 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label9;
         
         /// <summary>
         /// ctrlState control.
@@ -193,15 +112,6 @@ namespace ChineseSchool {
         protected global::System.Web.UI.WebControls.DropDownList ctrlState;
         
         /// <summary>
-        /// Label10 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label10;
-        
-        /// <summary>
         /// ctrlPostalCode control.
         /// </summary>
         /// <remarks>
@@ -209,15 +119,6 @@ namespace ChineseSchool {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox ctrlPostalCode;
-        
-        /// <summary>
-        /// Label11 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label11;
         
         /// <summary>
         /// ctrlPassword control.
@@ -229,15 +130,6 @@ namespace ChineseSchool {
         protected global::System.Web.UI.WebControls.TextBox ctrlPassword;
         
         /// <summary>
-        /// Label12 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label12;
-        
-        /// <summary>
         /// ctrlPassword2 control.
         /// </summary>
         /// <remarks>
@@ -247,15 +139,6 @@ namespace ChineseSchool {
         protected global::System.Web.UI.WebControls.TextBox ctrlPassword2;
         
         /// <summary>
-        /// ctrlSubmit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ctrlSubmit;
-        
-        /// <summary>
         /// ctrlCancel control.
         /// </summary>
         /// <remarks>
@@ -263,5 +146,14 @@ namespace ChineseSchool {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ctrlCancel;
+        
+        /// <summary>
+        /// ctrlSubmit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ctrlSubmit;
     }
 }

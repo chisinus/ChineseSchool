@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Telerik.Web.UI;
 
 namespace ChineseSchool.UserControl
 {
@@ -41,6 +42,27 @@ namespace ChineseSchool.UserControl
             }
 
             return ret;
+        }
+
+        public void ctrlGrid_ItemDataBound(object sender, Telerik.Web.UI.GridItemEventArgs e)
+        {
+            if (e.Item is GridDataItem)
+            {
+                GridDataItem dataItem = e.Item as GridDataItem;
+
+                LinkButton button = dataItem["DeleteColumn"].Controls[0] as LinkButton;
+                button.Attributes["onclick"] = "return confirm('Are you sure you want to delete this child?')";
+            }
+        }
+
+        protected void ctrlGrid_DeleteCommand(object sender, GridCommandEventArgs e)
+        {
+            int i = 0;
+        }
+
+        protected void ctrlGrid_ItemDeleted(object sender, GridCommandEventArgs e)
+        {
+            int i = 0;
         }
     }
 }

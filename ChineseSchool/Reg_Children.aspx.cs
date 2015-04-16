@@ -17,19 +17,21 @@ namespace ChineseSchool
             if (IsPostBack) return;
 
             PopulateGrade();
+
+            ctrlChildren.UpdateUI(GetCurrentUser());
         }
 
         private void PopulateGrade()
         {
-            List<ClassData> classes = CSAgent.GetClassList(GetSqlConnection());
-            if (classes == null) return;
+            //List<ClassData> classes = CSAgent.GetClassList(GetSqlConnection());
+            //if (classes == null) return;
 
-            ctrlClass.Items.Clear();
-            ctrlClass.Items.Add(new ListItem("Select One", "0"));
-            foreach (ClassData myClass in classes)
-            {
-                ctrlClass.Items.Add(new ListItem(myClass.ClassName + " / " + myClass.GradeName, myClass.ClassID.ToString()));
-            }
+            //ctrlClass.Items.Clear();
+            //ctrlClass.Items.Add(new ListItem("Select One", "0"));
+            //foreach (ClassData myClass in classes)
+            //{
+            //    ctrlClass.Items.Add(new ListItem(myClass.ClassName + " / " + myClass.GradeName, myClass.ClassID.ToString()));
+            //}
         }
 
         protected void ctrlAdd_Click(object sender, EventArgs e)
@@ -76,25 +78,25 @@ namespace ChineseSchool
 
             if (user.Children.Count == 0) Response.Redirect("Reg_Confirmation.aspx");
 
-            {
             SqlTransaction tran = GetSqlConnection().BeginTransaction();
 
-            child.ChildID = CSAgent.InsertChild(user.UserID, child, GetSqlConnection(), tran);
-            bool result = (child.ChildID > 0);
-            
-            if (result)
+            bool result = true;
+            foreach (ChildData child in user.Children)
             {
-                int childClassID = CSAgent.InsertChildClass(child.ChildID, Toolbox.StringToInt(ctrlClass.SelectedValue), GetSqlConnection(), tran);
-                result = childClassID > 0;
-
-                if (result)
+                child.ChildID = CSAgent.InsertChild(user.UserID, child, GetSqlConnection(), tran);
+                if (child.ChildID < 0)
                 {
-                    ClassData myClass = new ClassData();
-                    myClass.ClassID = childClassID;
-                    child.PickedClasses.Add(myClass);
+                    result = false;
+                    break;
+                }
+
+                if (CSAgent.InsertChildClass(child.ChildID, child.PickedClasses[0].ClassID, GetSqlConnection(), tran) > 0)
+                {
+                    result = false;
+                    break;
                 }
             }
-
+            
             Toolbox.EndTransaction(tran, result);
 
             if (!result)
@@ -103,9 +105,7 @@ namespace ChineseSchool
                 return;
             }
 
-            user.Children.Add(child);
             SetCurrentUser(user);
-
         }
 
         protected void ctrlCancel_Click(object sender, EventArgs e)

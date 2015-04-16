@@ -12,9 +12,8 @@
 <body>
     <form id="form1" runat="server">
         <img src="Images\LISOCtitle.gif"></img>
-        <div>
+        <div class="workingarea">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-        
             </asp:ContentPlaceHolder>
         </div>
     </form>

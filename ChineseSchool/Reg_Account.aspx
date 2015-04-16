@@ -5,63 +5,67 @@
     <asp:Label runat="server" ID="ctrlMessage" CssClass="ErrorMessage"></asp:Label>
     <div class="PageTitle">Create Account</div>
     <div class="SectionTitle">Personal Information</div>
-    <div>
-        <asp:Label ID="Label1" runat="server">First Name: </asp:Label>
-        <asp:TextBox runat="server" ID="ctrlFirstname" MaxLength ="30" />
+    <div class="required">
+        <p class="editor-label">First Name: </p>
+        <asp:TextBox runat="server" ID="ctrlFirstname" MaxLength ="30" CssClass="editor-field" />
+    </div>
+    <div class="required">
+        <p class="editor-label">Last Name: </p>
+        <asp:TextBox runat="server" ID="ctrlLastname" MaxLength ="30" CssClass="editor-field" />
+    </div>
+    <div class="required">
+        <p class="editor-label">Email Address: </p>
+        <asp:TextBox runat="server" ID="ctrlEmail" MaxLength ="100" CssClass="editor-field" />
+    </div>
+    <div class="required">
+        <p class="editor-label">Confirm Email Address: </p>
+        <asp:TextBox runat="server" ID="ctrlEmail2" MaxLength ="100" CssClass="editor-field" />
     </div>
     <div>
-        <asp:Label ID="Label2" runat="server">Last Name: </asp:Label>
-        <asp:TextBox runat="server" ID="ctrlLastname" MaxLength ="30" />
-    </div>
-    <div>
-        <asp:Label ID="Label3" runat="server">Email Address: </asp:Label>
-        <asp:TextBox runat="server" ID="ctrlEmail" MaxLength ="100" />
-    </div>
-    <div>
-        <asp:Label ID="Label4" runat="server">Confirm Email Address: </asp:Label>
-        <asp:TextBox runat="server" ID="ctrlEmail2" MaxLength ="100" />
-    </div>
-    <div>
-        <asp:Label ID="Label5" runat="server">Contact Phone: </asp:Label>
-        <asp:TextBox runat="server" ID="ctrlPhone" MaxLength ="30" />
-        <asp:TextBox runat="server" ID="ctrlPhoneExt" MaxLength ="10" />
+        <p class="editor-label">Contact Phone: </p>
+        <asp:TextBox runat="server" ID="ctrlPhone" MaxLength ="30" CssClass="editor-field" />
+        <asp:TextBox runat="server" ID="ctrlPhoneExt" MaxLength ="10" CssClass="editor-field" />
     </div>
     <div class="SectionTitle">Address Information</div>
     <div>
-        <asp:Label ID="Label6" runat="server">Address1: </asp:Label>
-        <asp:TextBox runat="server" ID="ctrlAddress1" MaxLength ="100" />
+        <p class="editor-label">Address1: </p>
+        <asp:TextBox runat="server" ID="ctrlAddress1" MaxLength ="100" CssClass="editor-field" Width="400px" />
     </div>
     <div>
-        <asp:Label ID="Label7" runat="server">Address2: </asp:Label>
-        <asp:TextBox runat="server" ID="ctrlAddress2" MaxLength ="100" />
+        <p class="editor-label">Address2: </p>
+        <asp:TextBox runat="server" ID="ctrlAddress2" MaxLength ="100" CssClass="editor-field" Width="400px" />
     </div>
     <div>
-        <asp:Label ID="Label8" runat="server">City: </asp:Label>
-        <asp:TextBox runat="server" ID="ctrlCity" MaxLength ="30" />
+        <p class="editor-label">City: </p>
+        <asp:TextBox runat="server" ID="ctrlCity" MaxLength ="30" CssClass="editor-field" />
     </div>
     <div>
-        <asp:Label ID="Label9" runat="server">State: </asp:Label>
-        <asp:DropDownList runat="server" ID="ctrlState" >
+        <p class="editor-label">State: </p>
+        <asp:DropDownList runat="server" ID="ctrlState"  CssClass="editor-field">
             <asp:ListItem Text="Select One" Value="0" />
             <asp:ListItem Text="New Jersey" Value="1" />
             <asp:ListItem Text="New York" Value="2" />
         </asp:DropDownList>
     </div>
     <div>
-        <asp:Label ID="Label10" runat="server" >Postal Code: </asp:Label>
-        <asp:TextBox runat="server" ID="ctrlPostalCode" MaxLength ="5" />
+        <p class="editor-label">Postal Code: </p>
+        <asp:TextBox runat="server" ID="ctrlPostalCode" MaxLength ="5" CssClass="editor-field" />
     </div>
     <div class="SectionTitle">Login Information</div>
-    <div>
-        <asp:Label ID="Label11" runat="server">Password: </asp:Label>
-        <asp:TextBox runat="server" ID="ctrlPassword" MaxLength ="20" TextMode="Password" />
+    <div class="required">
+        <p class="editor-label required">Password: </p>
+        <asp:TextBox runat="server" ID="ctrlPassword" MaxLength ="20"  TextMode="Password" CssClass="editor-field" />
     </div>
-    <div>
-        <asp:Label ID="Label12" runat="server">Confirm Password: </asp:Label>
-        <asp:TextBox runat="server" ID="ctrlPassword2" MaxLength ="20" TextMode="Password" />
+    <div class="required">
+        <p class="editor-label">Confirm Password: </p>
+        <asp:TextBox runat="server" ID="ctrlPassword2" MaxLength ="20"  TextMode="Password" CssClass="editor-field" />
     </div>
-    <div>
-        <asp:Button runat="server" ID="ctrlSubmit" OnClick="ctrlSubmit_Click" Text="Next" />
-        <asp:Button runat="server" ID="ctrlCancel" OnClick="ctrlCancel_Click" Text="Cancel" />
+    <div style="margin-top:2em" class="required">
+        <p> Required field</p>
     </div>
+    <div style="margin-top:2em">
+        <asp:Button runat="server" ID="ctrlCancel" OnClick="ctrlCancel_Click" Text="Cancel" CssClass="button" />
+        <asp:Button runat="server" ID="ctrlSubmit" OnClick="ctrlSubmit_Click" Text="Next" style="float:right;margin-right:170px" CssClass="button" />
+    </div>
+    
 </asp:Content>

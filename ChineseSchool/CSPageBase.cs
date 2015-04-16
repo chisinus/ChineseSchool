@@ -25,10 +25,15 @@ namespace ChineseSchool
 
         #region sessoin
         const string SESSION_CURRENTUSER = "CurrentUser";
-        protected UserData GetCurrentUser()
+        protected UserData GetCurrentUser(bool mustHave = true)
         {
             if (Session[SESSION_CURRENTUSER] == null)
-                Response.Redirect("Login.aspx");
+            {
+                if (mustHave)
+                    Response.Redirect("Login.aspx");
+
+                return new UserData();
+            }
 
             return (UserData)Session[SESSION_CURRENTUSER];
         }

@@ -1,39 +1,39 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UC_UserInfo.ascx.cs" Inherits="ChineseSchool.UserControl.UC_UserInfo" %>
 <div class="SectionTitle">Your Information</div>
 <div>
-    <asp:Label ID="Label1" runat="server">First Name: </asp:Label>
-    <asp:Label runat="server" ID="ctrlFirstname" />
+    <p class="editor-label">First Name: </p>
+    <asp:Label runat="server" ID="ctrlFirstname" CssClass="display-text" />
 </div>
 <div>
-    <asp:Label ID="Label2" runat="server">Last Name: </asp:Label>
-    <asp:Label runat="server" ID="ctrlLastname" />
+    <p class="editor-label">Last Name: </p>
+    <asp:Label runat="server" ID="ctrlLastname" CssClass="display-text" />
 </div>
 <div>
-    <asp:Label ID="Label3" runat="server">Email Address: </asp:Label>
-    <asp:Label runat="server" ID="ctrlEmail" />
+        <p class="editor-label">Email Address: </p>
+    <asp:Label runat="server" ID="ctrlEmail" CssClass="display-text" />
 </div>
 <div>
-    <asp:Label ID="Label5" runat="server">Contact Phone: </asp:Label>
-    <asp:Label runat="server" ID="ctrlPhone" /> - <asp:Label runat="server" ID="ctrlPhoneExt" />
+    <p class="editor-label">Contact Phone: </p>
+    <asp:Label runat="server" ID="ctrlPhone" CssClass="display-text" />
 </div>
 <div class="SectionTitle">Address Information</div>
 <div>
-    <asp:Label ID="Label6" runat="server">Address1: </asp:Label>
-    <asp:Label runat="server" ID="ctrlAddress1" />
+    <p class="editor-label">Address1: </p>
+    <asp:Label runat="server" ID="ctrlAddress1" CssClass="display-text" />
 </div>
 <div>
-    <asp:Label ID="Label7" runat="server">Address2: </asp:Label>
-    <asp:Label runat="server" ID="ctrlAddress2" />
+        <p class="editor-label">Address2: </p>
+    <asp:Label runat="server" ID="ctrlAddress2" CssClass="display-text" />
 </div>
 <div>
-    <asp:Label ID="Label8" runat="server">City: </asp:Label>
-    <asp:Label runat="server" ID="ctrlCity" />
+    <p class="editor-label">City: </p>
+    <asp:Label runat="server" ID="ctrlCity" CssClass="display-text" />
 </div>
 <div>
-    <asp:Label ID="Label9" runat="server">State: </asp:Label>
-    <asp:Label runat="server" ID="ctrlState" />
+    <p class="editor-label">State: </p>
+    <asp:Label runat="server" ID="ctrlState" CssClass="display-text" />
 </div>
 <div>
-    <asp:Label ID="Label10" runat="server" >Postal Code: </asp:Label>
-    <asp:Label runat="server" ID="ctrlPostalCode" />
+    <p class="editor-label">Postal Code: </p>
+    <asp:Label runat="server" ID="ctrlPostalCode" CssClass="display-text" />
 </div>

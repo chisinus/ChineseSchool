@@ -37,13 +37,13 @@ namespace ChineseSchool
             if (!ValidateData())
                 return;
 
-            UserData user = new UserData();
+            UserData user = GetCurrentUser();
 
-            user.Password = ctrlPassword.Text.Trim(); ;
+            user.Password = ctrlPassword.Text.Trim();
             user.Firstname = ctrlFirstname.Text.Trim();
             user.Lastname = ctrlLastname.Text.Trim();
             user.Email = ctrlEmail.Text.Trim();
-            user.Phone = ctrlPhone.Text.Trim(); ;
+            user.Phone = ctrlPhone.Text.Trim();
             user.Phone_Ext = ctrlPhoneExt.Text.Trim();
             user.Address1 = ctrlAddress1.Text.Trim();
             user.Address2 = ctrlAddress2.Text.Trim();
@@ -52,12 +52,12 @@ namespace ChineseSchool
             user.PostalCode = ctrlPostalCode.Text.Trim();
             user.UserType = CSConstants.UserTypes.User;
 
-            user.UserID = CSAgent.InsertUser(user, GetSqlConnection());
-            if (user.UserID < 0)
-            {
-                ctrlMessage.Text = CSMessage.ERR_CompleteRequest;
-                return;
-            }
+            //user.UserID = CSAgent.InsertUser(user, GetSqlConnection());
+            //if (user.UserID < 0)
+            //{
+            //    ctrlMessage.Text = CSMessage.ERR_CompleteRequest;
+            //    return;
+            //}
 
             SetCurrentUser(user);
 

@@ -5,39 +5,42 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Label runat="server" ID="ctrlMessage" CssClass="Error"></asp:Label>
     <div class="PageTitle">Create Account - Add Children</div>
     
     <uc1:UC_ChildList runat="server" ID="ctrlChildren" />
 
     <div class="SectionTitle">Child Information</div>
-    <div>
-        <asp:Label ID="Label1" runat="server">Child First Name: </asp:Label>
-        <asp:TextBox runat="server" ID="ctrlFirstname" MaxLength ="30" />
+    <asp:Label runat="server" ID="ctrlMessage" CssClass="Error"></asp:Label>
+    <div class="required">
+        <p class="editor-label">Child First Name: </p>
+        <asp:TextBox runat="server" ID="ctrlFirstname" MaxLength ="30" CssClass="editor-field" />
+    </div>
+    <div class="required">
+        <p class="editor-label">Child Last Name: </p>
+        <asp:TextBox runat="server" ID="ctrlLastname" MaxLength ="30" CssClass="editor-field" />
     </div>
     <div>
-        <asp:Label ID="Label2" runat="server">Child Last Name: </asp:Label>
-        <asp:TextBox runat="server" ID="ctrlLastname" MaxLength ="30" />
-    </div>
-    <div>
-        <asp:Label ID="Label9" runat="server">Gender: </asp:Label>
-        <asp:DropDownList runat="server" ID="ctrlGender" >
+        <p class="editor-label">Gender: </p>
+        <asp:DropDownList runat="server" ID="ctrlGender"  CssClass="editor-field" >
             <asp:ListItem Text="Select One" Value="0" />
             <asp:ListItem Text="Boy" Value="1" />
             <asp:ListItem Text="Girl" Value="2" />
         </asp:DropDownList>
     </div>
     <div>
-        <asp:Label ID="Label4" runat="server">Year of Birth: </asp:Label>
-        <asp:TextBox runat="server" ID="ctrlYOB" MaxLength ="4" />
+        <p class="editor-label">Year of Birth: </p>
+        <asp:TextBox runat="server" ID="ctrlYOB" MaxLength ="4" CssClass="editor-field" />
     </div>    
-    <div>
-        <asp:Label ID="Label3" runat="server">Class/Grade: </asp:Label>
-        <asp:DropDownList runat="server" ID="ctrlClass" />
+    <div class="required">
+        <p class="editor-label">Class/Grade: </p>
+        <asp:DropDownList runat="server" ID="ctrlClass" CssClass="editor-field" />
     </div>
-    <div>
-        <asp:Button runat="server" ID="ctrlAdd" OnClick="ctrlAdd_Click" Text="Add" />
-        <asp:Button runat="server" ID="ctrlSubmit" OnClick="ctrlSubmit_Click" Text="Finish" />
-        <asp:Button runat="server" ID="ctrlCancel" OnClick="ctrlCancel_Click" Text="Cancel" />
+    <asp:Button runat="server" ID="ctrlAdd" OnClick="ctrlAdd_Click" Text="Add" style="margin-right:400px; float:right; margin-top:2em;" CssClass="button" />
+    <div style="margin-top:2em" class="required">
+        <p> Required field</p>
+    </div>
+    <div style="margin-top:3em;">
+        <asp:Button runat="server" ID="ctrlCancel" OnClick="ctrlCancel_Click" Text="Cancel" CssClass="button" />
+        <asp:Button runat="server" ID="ctrlSubmit" OnClick="ctrlSubmit_Click" Text="Finish" CssClass="button" style="margin-right:400px;float:right" />
     </div>
 </asp:Content>

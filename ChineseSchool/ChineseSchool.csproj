@@ -39,7 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AjaxControlToolkit">
-      <HintPath>..\..\Components\AjaxControlToolkit.dll</HintPath>
+      <HintPath>..\Components\AjaxControlToolkit.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
@@ -59,7 +59,10 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="Telerik.Web.UI">
-      <HintPath>..\..\Components\Telerik.Web.UI.dll</HintPath>
+      <HintPath>..\Components\Telerik.Web.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Web.UI.Skins">
+      <HintPath>..\Components\Telerik.Web.UI.Skins.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -71,6 +74,27 @@
     <Content Include="Reg_ChildrenClasses.aspx" />
     <Content Include="Reg_Children.aspx" />
     <Content Include="Reg_Confirmation.aspx" />
+    <Content Include="Styles\Skins\Telerik\Grid.css" />
+    <Content Include="Styles\Skins\Telerik\Grid\AddRecord.gif" />
+    <Content Include="Styles\Skins\Telerik\Grid\Cancel.gif" />
+    <Content Include="Styles\Skins\Telerik\Grid\Delete.gif" />
+    <Content Include="Styles\Skins\Telerik\Grid\Edit.gif" />
+    <Content Include="Styles\Skins\Telerik\Grid\Filter.gif" />
+    <Content Include="Styles\Skins\Telerik\Grid\MoveDown.gif" />
+    <Content Include="Styles\Skins\Telerik\Grid\MoveUp.gif" />
+    <Content Include="Styles\Skins\Telerik\Grid\PagingFirst.gif" />
+    <Content Include="Styles\Skins\Telerik\Grid\PagingLast.gif" />
+    <Content Include="Styles\Skins\Telerik\Grid\PagingNext.gif" />
+    <Content Include="Styles\Skins\Telerik\Grid\PagingPrev.gif" />
+    <Content Include="Styles\Skins\Telerik\Grid\Refresh.gif" />
+    <Content Include="Styles\Skins\Telerik\Grid\rgDrag.gif" />
+    <Content Include="Styles\Skins\Telerik\Grid\SingleMinus.gif" />
+    <Content Include="Styles\Skins\Telerik\Grid\SinglePlus.gif" />
+    <Content Include="Styles\Skins\Telerik\Grid\SortAsc.gif" />
+    <Content Include="Styles\Skins\Telerik\Grid\SortDesc.gif" />
+    <Content Include="Styles\Skins\Telerik\Grid\sprite.gif" />
+    <Content Include="Styles\Skins\Telerik\Grid\Update.gif" />
+    <Content Include="Styles\Skins\Telerik\Grid\WebBlue.gif" />
     <Content Include="Styles\style.css" />
     <Content Include="User.aspx" />
     <Content Include="UserControl\UC_ChildList.ascx" />

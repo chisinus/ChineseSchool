@@ -3,7 +3,7 @@
 }
 
 div {
-    padding-bottom: 10px;
+    /*border:1px solid blue;*/
 }
 
 .PageTitle {
@@ -15,4 +15,50 @@ div {
     padding-top: 15px;
     font-size: medium;
     font-weight:bold;
+}
+
+div.workingarea 
+{
+    margin-left: auto;
+    margin-right: auto;
+    /*border:1px solid red;*/
+    width:800px;
+}
+
+.editor-label
+{
+    /*border:1px solid blue;*/
+    clear:both;
+    float:left;
+    width:200px;
+    margin:0.5em 1em 0 0;
+    /*font-weight:bold;*/
+    text-align:right;
+    display:inline-block;
+}
+
+.display-text
+{
+    display:inline-block;
+    margin:0.5em 1em 0 0;
+    min-height:1.5em;
+}
+
+.editor-field, .display-field 
+{
+    border:1px solid blue;
+    margin:0.5em 0 0 0;   
+    min-height:1.5em;
+}
+
+.required input:after { content:"*"; }
+
+.required p:before {
+    color: #e32;
+    content: ' * ';
+    display:inline;
+}
+
+.button {
+    width:75px;
 }
