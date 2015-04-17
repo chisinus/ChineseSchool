@@ -15,9 +15,17 @@ namespace ChineseSchool.BusinessLogic
 {
     public static class Toolbox
     {
+        public static string LoggingPath = "";
+
         #region Logging
         public static void Logging(string caller, string msg, Exception e)
         {
+            StreamWriter sw = File.CreateText(LoggingPath + "Logging.txt"); // creating file
+            sw.Write("Caller: " + caller + "\r\n");
+            sw.Write("Message: " + msg + "\r\n");
+            sw.Write("Exception: " + e.ToString() + "\r\n");
+            sw.Write("==============================");
+            sw.Close();
         }
         #endregion logging
 

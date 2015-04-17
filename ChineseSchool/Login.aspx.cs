@@ -17,6 +17,8 @@ namespace ChineseSchool
         {
             if (IsPostBack) return;
 
+            if (Toolbox.LoggingPath == "") Toolbox.LoggingPath = Server.MapPath("/");
+
             Session.Clear();
         }
 
