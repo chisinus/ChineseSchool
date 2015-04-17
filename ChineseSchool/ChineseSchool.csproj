@@ -71,6 +71,7 @@
     <Content Include="Reg_ChildrenClasses.aspx" />
     <Content Include="Reg_Children.aspx" />
     <Content Include="Reg_Confirmation.aspx" />
+    <Content Include="Reg_Other.aspx" />
     <Content Include="Styles\Skins\Telerik\Grid.css" />
     <Content Include="Styles\Skins\Telerik\Grid\AddRecord.gif" />
     <Content Include="Styles\Skins\Telerik\Grid\Cancel.gif" />
@@ -97,6 +98,7 @@
     <Content Include="UserControl\UC_ChildList.ascx" />
     <Content Include="UserControl\UC_UserInfo.ascx" />
     <Content Include="Web.config" />
+    <Content Include="XJTest.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin.aspx.cs">
@@ -170,6 +172,13 @@
     <Compile Include="Reg_Confirmation.aspx.designer.cs">
       <DependentUpon>Reg_Confirmation.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Reg_Other.aspx.cs">
+      <DependentUpon>Reg_Other.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reg_Other.aspx.designer.cs">
+      <DependentUpon>Reg_Other.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SecurePageBase.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -193,6 +202,13 @@
     </Compile>
     <Compile Include="UserControl\UC_UserInfo.ascx.designer.cs">
       <DependentUpon>UC_UserInfo.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="XJTest.aspx.cs">
+      <DependentUpon>XJTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="XJTest.aspx.designer.cs">
+      <DependentUpon>XJTest.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -43,4 +43,33 @@
         <asp:Button runat="server" ID="ctrlCancel" OnClick="ctrlCancel_Click" Text="Cancel" CssClass="button" />
         <asp:Button runat="server" ID="ctrlSubmit" OnClick="ctrlSubmit_Click" Text="Finish" CssClass="button" style="margin-right:400px;float:right" />
     </div>
+
+    <div class="SectionTitle">Other</div>
+    <div class="required">
+        <p class="editor-label">1. Has your child had any serious illness, injury, operation or communicable disease since September of last year? Specify please,if yes. </p>
+        <asp:CheckBox runat="server" ID="ctrlSeriousIllness" CssClass="editor-field" />
+        <asp:TextBox runat="server" ID="ctrlSeriousIllnessInfo" MaxLength ="250" CssClass="editor-field" />
+    </div>
+    <div class="required">
+        <p class="editor-label">2. Are there any conditions such as Heart Disease, Epilepsy, Diabetes, Asthma or any allergies that the school should be aware of? Specify please, if yes.</p>
+        <asp:CheckBox runat="server" ID="ctrlHeartDisease" CssClass="editor-field" />
+        <asp:TextBox runat="server" ID="ctrlHeartDiseaseInfo" MaxLength ="250" CssClass="editor-field" />
+    </div>
+    <div class="required">
+        <p class="editor-label">3. Excluding vitamins, does your child take any medication on a regular basis? Specify please, if yes.</p>
+        <asp:CheckBox runat="server" ID="ctrlMedicine" CssClass="editor-field" />
+        <asp:TextBox runat="server" ID="ctrlMedicineInfo" MaxLength ="250" CssClass="editor-field" />
+    </div>
+
+    <div class="SectionTitle">Tuition and Refund Policy</div>
+    Tuition is $450, books $30, registration fee $20.  Registration fee is waived before June 16. In addition, there is a parent-on-duty deposit $50 per student. It is refundable when parents fulfill their duty.  Each additional sibling gets 10% discount off the tuition.
+    Cancellation request received by 7/31/2013 (on site or email to lisoc2003@yahoo.com only) will be refunded the amount paid minus a $20 administrative fee for each student.  Cancellation received within the first 4 weeks of school year will be refunded $300 ($270 for siblings). No refund will be issued for any cancellation after 4 weeks of the start of school year.”
+
+    <div class="SectionTitle">Acknowlege</div>
+    My child and I have read and agree that we will follow the Code of Conducts of LISOC, and the other school regulations. School website www.lisoc.org provides with the full contents.
+    <div class="required">
+        <span class="required">&nbsp;*</span>&nbsp;&nbsp;I accept the terms of this agreement.</div>
+        <p class="editor-label">I accept the terms of this agreement.</p>
+        <asp:CheckBox runat="server" ID="ctrlAccept" />
+    </div>
 </asp:Content>
