@@ -5,7 +5,7 @@
     <asp:Label runat="server" ID="ctrlFirstname" CssClass="display-text" />
 </div>
 <div>
-    <p class="editor-label">Last Name: </p>
+    <p class="editor-label">Last Name: </p> 
     <asp:Label runat="server" ID="ctrlLastname" CssClass="display-text" />
 </div>
 <div>
