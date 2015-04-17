@@ -13,7 +13,7 @@ namespace ChineseSchool
     {
         SqlConnection sqlConnection = null;
 
-        protected SqlConnection GetSqlConnection()
+        public SqlConnection GetSqlConnection()
         {
             if (sqlConnection == null || sqlConnection.State != ConnectionState.Open)
             {
@@ -25,7 +25,8 @@ namespace ChineseSchool
 
         #region sessoin
         const string SESSION_CURRENTUSER = "CurrentUser";
-        protected UserData GetCurrentUser(bool mustHave = true)
+        const string SESSION_EDITMODE = "EditMode";
+        public UserData GetCurrentUser(bool mustHave = true)
         {
             if (Session[SESSION_CURRENTUSER] == null)
             {
@@ -38,10 +39,35 @@ namespace ChineseSchool
             return (UserData)Session[SESSION_CURRENTUSER];
         }
 
-        protected void SetCurrentUser(UserData user)
+        public void SetCurrentUser(UserData user)
         {
             Session[SESSION_CURRENTUSER] = user;
         }
+
+        public CSConstants.EditMode GetEditMode()
+        {
+            if (Session[SESSION_EDITMODE] == null)
+                GoToLoginPage();
+
+            return (CSConstants.EditMode)Session[SESSION_EDITMODE];
+        }
+
+        public void SetEditMode(CSConstants.EditMode mode)
+        {
+            Session[SESSION_EDITMODE] = mode;
+        }
+
+        //for edit children
+        public void SetChildren(List<ChildData> list)
+        {
+            Session["Children"] = list;
+        }
+
+        public List<ChildData> GetChildren()
+        {
+            return (List<ChildData>)Session["Children"];
+        }
+
         #endregion sessoin
 
         protected void GoToLoginPage()

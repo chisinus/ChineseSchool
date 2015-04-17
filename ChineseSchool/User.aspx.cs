@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChineseSchool.BusinessObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,11 +15,12 @@ namespace ChineseSchool
             if (IsPostBack) return;
 
             ctrlUserInfo.UpdateUI(GetCurrentUser());
-            ctrlChildren.UpdateUI(GetCurrentUser());
+            ctrlChildren.UpdateUI(GetCurrentUser().Children, false);
         }
 
         protected void ctrlEdit_Click(object sender, EventArgs e)
         {
+            SetEditMode(CSConstants.EditMode.Edit);
             Response.Redirect("Reg_Account.aspx");
         }
 

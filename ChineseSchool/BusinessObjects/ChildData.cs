@@ -43,6 +43,8 @@ namespace ChineseSchool.BusinessObjects
 
         internal void AddClass(SqlDataReader reader)
         {
+            if (reader["ClassID"] is DBNull) return;
+
             PickedClasses.Add(new ClassData(reader));
         }
     }

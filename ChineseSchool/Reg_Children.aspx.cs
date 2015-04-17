@@ -18,20 +18,22 @@ namespace ChineseSchool
 
             PopulateGrade();
 
-            ctrlChildren.UpdateUI(GetCurrentUser());
+            SetChildren(GetCurrentUser().Children);
+
+            ctrlChildren.UpdateUI(GetCurrentUser().Children, true);
         }
 
         private void PopulateGrade()
         {
-            //List<ClassData> classes = CSAgent.GetClassList(GetSqlConnection());
-            //if (classes == null) return;
+            List<ClassData> classes = CSAgent.GetClassList(GetSqlConnection());
+            if (classes == null) return;
 
-            //ctrlClass.Items.Clear();
-            //ctrlClass.Items.Add(new ListItem("Select One", "0"));
-            //foreach (ClassData myClass in classes)
-            //{
-            //    ctrlClass.Items.Add(new ListItem(myClass.ClassName + " / " + myClass.GradeName, myClass.ClassID.ToString()));
-            //}
+            ctrlClass.Items.Clear();
+            ctrlClass.Items.Add(new ListItem("Select One", "0"));
+            foreach (ClassData myClass in classes)
+            {
+                ctrlClass.Items.Add(new ListItem(myClass.ClassName + " / " + myClass.GradeName, myClass.ClassID.ToString()));
+            }
         }
 
         protected void ctrlAdd_Click(object sender, EventArgs e)
@@ -47,11 +49,20 @@ namespace ChineseSchool
             child.YOB = Toolbox.StringToInt(ctrlYOB.Text.Trim());
             child.PickedClasses.Add(CSAgent.GetClassInfo(Toolbox.StringToInt(ctrlClass.SelectedValue), GetSqlConnection()));
 
-            UserData user = GetCurrentUser();
-            user.Children.Add(child);
-            SetCurrentUser(user);
+            List<ChildData> children = GetChildren();
+            int id = -1;
+            foreach (ChildData c in children)
+            {
+                if (c.ChildID > id) 
+                    id = c.ChildID;
+            }
 
-            ctrlChildren.UpdateUI(user);
+            child.ChildID = id + 1;
+
+            children.Add(child);
+            SetChildren(children);
+
+            ctrlChildren.UpdateUI(children, true);
         }
 
         private bool ValidateData()
@@ -76,12 +87,24 @@ namespace ChineseSchool
         {
             UserData user = GetCurrentUser();
 
-            if (user.Children.Count == 0) Response.Redirect("Reg_Confirmation.aspx");
-
             SqlTransaction tran = GetSqlConnection().BeginTransaction();
 
+            if (GetEditMode() == CSConstants.EditMode.Edit && 
+                !CSAgent.DeleteChildren(user.UserID, GetSqlConnection(), tran))
+            {
+                ctrlMessage.Text = "Failed to submit your request.";
+                Toolbox.EndTransaction(tran, false);
+                return;
+            }
+
+            if (user.Children.Count == 0)
+            {
+                Response.Redirect("Reg_Confirmation.aspx");
+            }
+
             bool result = true;
-            foreach (ChildData child in user.Children)
+            List<ChildData> children = GetChildren();
+            foreach (ChildData child in children)
             {
                 child.ChildID = CSAgent.InsertChild(user.UserID, child, GetSqlConnection(), tran);
                 if (child.ChildID < 0)
@@ -90,7 +113,7 @@ namespace ChineseSchool
                     break;
                 }
 
-                if (CSAgent.InsertChildClass(child.ChildID, child.PickedClasses[0].ClassID, GetSqlConnection(), tran) > 0)
+                if (CSAgent.InsertChildClass(child.ChildID, child.PickedClasses[0].ClassID, GetSqlConnection(), tran) < 0)
                 {
                     result = false;
                     break;
@@ -105,7 +128,12 @@ namespace ChineseSchool
                 return;
             }
 
-            SetCurrentUser(user);
+            SetCurrentUser(CSAgent.GetUserByEmail(GetCurrentUser().Email, GetSqlConnection()));
+
+            if (GetEditMode() == CSConstants.EditMode.New)
+                Response.Redirect("Reg_Confirmation.aspx");
+            else
+                Response.Redirect("User.aspx");
         }
 
         protected void ctrlCancel_Click(object sender, EventArgs e)

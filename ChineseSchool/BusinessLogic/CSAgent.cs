@@ -107,5 +107,52 @@ namespace ChineseSchool.BusinessLogic
 
             return Toolbox.GetDBObject<ClassData>("GetClassInfo", "procClass_GetClassInfo", conn, parameters);
         }
+
+        internal static bool UpdateUser(UserData user, SqlConnection conn)
+        {
+            if ((user == null) || (conn == null)) return false;
+
+            SqlParameter[] parameters = new SqlParameter[] 
+												{ 
+                                                    new SqlParameter("@UserID", user.UserID),
+													new SqlParameter("@Password", user.Password),
+													new SqlParameter("@Firstname", user.Firstname),
+													new SqlParameter("@Lastname", user.Lastname),
+													new SqlParameter("@Email", user.Email),
+													new SqlParameter("@Phone", user.Phone),
+													new SqlParameter("@Phone_Ext", user.Phone_Ext),
+													new SqlParameter("@Address1", user.Address1),
+													new SqlParameter("@Address2", user.Address2),
+													new SqlParameter("@City", user.City),
+													new SqlParameter("@StateID", user.State.StateID),
+													new SqlParameter("@PostalCode", user.PostalCode)
+												};
+
+            return Toolbox.WriteDataToDB("UpdateUser", "procUser_UpdateUser", conn, parameters);
+        }
+
+        internal static bool DeleteChildren(int userID, SqlConnection conn, SqlTransaction tran)
+        {
+            if ((userID <= 0) || (conn==null) || (tran==null)) return false;
+
+            SqlParameter[] parameters = new SqlParameter[] 
+												{ 
+													new SqlParameter("@UserID", userID)
+												};
+
+            return Toolbox.WriteDataToDB("DeleteChildren", "procUser_DeleteChildren", conn, parameters, tran);
+        }
+
+        internal static bool DeleteChild(int childID, SqlConnection conn, SqlTransaction tran)
+        {
+            if ((childID <= 0) || (conn == null) || (tran == null)) return false;
+
+            SqlParameter[] parameters = new SqlParameter[] 
+												{ 
+													new SqlParameter("@ChildID", childID)
+												};
+
+            return Toolbox.WriteDataToDB("DeleteChild", "procUser_DeleteChild", conn, parameters, tran);
+        }
     }
 }
