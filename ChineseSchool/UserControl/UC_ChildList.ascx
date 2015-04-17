@@ -21,13 +21,16 @@
         AllowFilteringByColumn="false"
         EnableLinqExpressions="false"
         OnItemDataBound="ctrlGrid_ItemDataBound"
-        DeleteCommand="ctrGrid_DeleteCommand">
+        OnDeleteCommand="ctrlGrid_DeleteCommand">
         <ClientSettings>
             <Selecting AllowRowSelect="False" EnableDragToSelectRows="False" />
         </ClientSettings>
         <GroupingSettings CaseSensitive="false"/>
-        <mastertableview AllowNaturalSort="False" NoMasterRecordsText="No child added" >
+        <mastertableview AllowNaturalSort="False" NoMasterRecordsText="No child added" ClientDataKeyNames="ChildID">
             <Columns>                
+                <rad:GridBoundColumn UniqueName="ChildID" DataField="ChildID" HeaderText="Last" HtmlEncode="true" ShowFilterIcon="false" Display="false" >
+                    <HeaderStyle Width="1px" />
+                </rad:GridBoundColumn>
                 <rad:GridBoundColumn UniqueName="ChildLastname" DataField="ChildLastname" HeaderText="Last" HtmlEncode="true" ShowFilterIcon="false" >
                     <HeaderStyle Width="100px" />
                 </rad:GridBoundColumn>

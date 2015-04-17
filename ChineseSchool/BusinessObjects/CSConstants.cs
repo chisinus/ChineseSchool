@@ -23,5 +23,11 @@ namespace ChineseSchool.BusinessObjects
             Admin = 1,
             User = 2
         }
+
+        public enum EditMode
+        {
+            New = 1,
+            Edit = 2
+        }
     }
 }

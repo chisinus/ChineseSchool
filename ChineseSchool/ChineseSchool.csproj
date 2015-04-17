@@ -61,9 +61,6 @@
     <Reference Include="Telerik.Web.UI">
       <HintPath>..\Components\Telerik.Web.UI.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.Web.UI.Skins">
-      <HintPath>..\Components\Telerik.Web.UI.Skins.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin.aspx" />
