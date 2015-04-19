@@ -12,84 +12,81 @@ namespace ChineseSchool
 {
     public partial class XJTest : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected void RadGrid1_ItemUpdated(object source, Telerik.Web.UI.GridUpdatedEventArgs e)
         {
-            DataTable dt = new DataTable();
-            dt.Columns.Add("CustomerID", typeof(int));
-            dt.Columns.Add("ContactName", typeof(string));
-            dt.Columns.Add("CompanyName", typeof(string));
-            dt.Columns.Add("ContactTitle", typeof(string));
-            dt.Columns.Add("Phone", typeof(string));
-
-            for (int i = 0; i < 10; i++ )
+            if (e.Exception != null)
             {
-                dt.Rows.Add(i, "ContactName" + i, "CompanyName" + i, "ContactTitle" + i, "Phone" + i);
+                e.KeepInEditMode = true;
+                e.ExceptionHandled = true;
+                DisplayMessage(true, "Employee " + e.Item.OwnerTableView.DataKeyValues[e.Item.ItemIndex]["EmployeeID"] + " cannot be updated. Reason: " + e.Exception.Message);
             }
-
-            RadGrid1.DataSource = dt;
-            RadGrid1.Rebind();
-        }
-
-        protected void RadGrid1_ItemCreated(object sender, Telerik.Web.UI.GridItemEventArgs e)
-        {
-            if (e.Item is GridEditableItem && e.Item.IsInEditMode)
+            else
             {
-                if (!(e.Item is GridEditFormInsertItem))
-                {
-                    GridEditableItem item = e.Item as GridEditableItem;
-                    GridEditManager manager = item.EditManager;
-                    GridTextBoxColumnEditor editor = manager.GetColumnEditor("CustomerID") as GridTextBoxColumnEditor;
-                    editor.TextBoxControl.Enabled = false;
-                }
+                DisplayMessage(false, "Employee " + e.Item.OwnerTableView.DataKeyValues[e.Item.ItemIndex]["EmployeeID"] + " updated");
             }
         }
+
         protected void RadGrid1_ItemInserted(object source, GridInsertedEventArgs e)
         {
             if (e.Exception != null)
             {
-
                 e.ExceptionHandled = true;
-                SetMessage("Customer cannot be inserted. Reason: " + e.Exception.Message);
-
+                e.KeepInInsertMode = true;
+                DisplayMessage(true, "Employee cannot be inserted. Reason: " + e.Exception.Message);
             }
             else
             {
-                SetMessage("New customer is inserted!");
+                DisplayMessage(false, "Employee inserted");
             }
         }
-        private void DisplayMessage(string text)
+
+        protected void RadGrid1_ItemDeleted(object source, GridDeletedEventArgs e)
         {
-            RadGrid1.Controls.Add(new LiteralControl(string.Format("<span style='color:red'>{0}</span>", text)));
+            if (e.Exception != null)
+            {
+                e.ExceptionHandled = true;
+                DisplayMessage(true, "Employee " + e.Item.OwnerTableView.DataKeyValues[e.Item.ItemIndex]["EmployeeID"] + " cannot be deleted. Reason: " + e.Exception.Message);
+            }
+            else
+            {
+                DisplayMessage(false, "Employee " + e.Item.OwnerTableView.DataKeyValues[e.Item.ItemIndex]["EmployeeID"] + " deleted");
+            }
         }
 
-        private void SetMessage(string message)
+        private void DisplayMessage(bool isError, string text)
         {
-            gridMessage = message;
+            Label label = (isError) ? this.Label1 : this.Label2;
+            label.Text = text;
         }
 
-        private string gridMessage = null;
+        protected void Page_Load(object sender, System.EventArgs e)
+        {
+        }
 
+        protected void RadGrid1_ItemCommand(object source, GridCommandEventArgs e)
+        {
+            if (e.CommandName == RadGrid.InitInsertCommandName) //"Add new" button clicked
+            {
+                GridEditCommandColumn editColumn = (GridEditCommandColumn)RadGrid1.MasterTableView.GetColumn("EditCommandColumn");
+                editColumn.Visible = false;
+            }
+            else if (e.CommandName == RadGrid.RebindGridCommandName && e.Item.OwnerTableView.IsItemInserted)
+            {
+                e.Canceled = true;
+            }
+            else
+            {
+                GridEditCommandColumn editColumn = (GridEditCommandColumn)RadGrid1.MasterTableView.GetColumn("EditCommandColumn");
+                if (!editColumn.Visible)
+                    editColumn.Visible = true;
+            }
+        }
         protected void RadGrid1_PreRender(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(gridMessage))
+            if (!Page.IsPostBack)
             {
-                DisplayMessage(gridMessage);
-            }
-        }
-
-        protected void RadGrid1_InsertCommand(object sender, GridCommandEventArgs e)
-        {
-            if (e.Item is GridEditableItem)
-            {
-                GridEditableItem editedItem = e.Item as GridEditableItem;
-                //here editedItem.SavedOldValues will be the dictionary which holds the
-                //predefined values
-
-                //Prepare new dictionary object
-                Hashtable newValues = new Hashtable();
-                e.Item.OwnerTableView.ExtractValuesFromItem(newValues, editedItem);
-                //the newValues instance is the new collection of key -> value pairs
-                //with the updated ny the user data
+                RadGrid1.EditIndexes.Add(0);
+                RadGrid1.Rebind();
             }
         }
     }

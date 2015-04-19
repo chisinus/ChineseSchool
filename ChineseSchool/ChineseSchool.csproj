@@ -64,14 +64,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin.aspx" />
-    <Content Include="Images\LISOCtitle.gif" />
+    <Content Include="CSService.asmx" />
+    <Content Include="Documents\Issues.txt" />
+    <Content Include="Images\Banner.jpg" />
+    <Content Include="Images\Logo.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="Register-not-used.aspx" />
     <Content Include="Reg_Account.aspx" />
     <Content Include="Reg_ChildrenClasses.aspx" />
     <Content Include="Reg_Children.aspx" />
     <Content Include="Reg_Confirmation.aspx" />
-    <Content Include="Reg_Other.aspx" />
     <Content Include="Styles\Skins\Telerik\Grid.css" />
     <Content Include="Styles\Skins\Telerik\Grid\AddRecord.gif" />
     <Content Include="Styles\Skins\Telerik\Grid\Cancel.gif" />
@@ -108,10 +110,13 @@
     <Compile Include="Admin.aspx.designer.cs">
       <DependentUpon>Admin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BusinessLogic\ActivityAgent.cs" />
     <Compile Include="BusinessLogic\CSAgent.cs" />
     <Compile Include="BusinessLogic\Toolbox.cs" />
     <Compile Include="BusinessObjects\ChildData.cs" />
     <Compile Include="BusinessObjects\ClassData.cs" />
+    <Compile Include="BusinessObjects\TeacherData.cs" />
+    <Compile Include="BusinessObjects\GradeData.cs" />
     <Compile Include="BusinessObjects\CSConstants.cs" />
     <Compile Include="BusinessObjects\CSMessage.cs" />
     <Compile Include="BusinessObjects\CSObject.cs" />
@@ -119,8 +124,13 @@
     <Compile Include="BusinessObjects\ICSObjectFromDB.cs" />
     <Compile Include="BusinessObjects\StateData.cs" />
     <Compile Include="BusinessObjects\UserData.cs" />
+    <Compile Include="BusinessObjects\VolunteerData.cs" />
     <Compile Include="CSPageBase.cs">
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CSService.asmx.cs">
+      <DependentUpon>CSService.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Includes\ChineseSchool.Master.cs">
       <DependentUpon>ChineseSchool.Master</DependentUpon>
@@ -172,13 +182,6 @@
     <Compile Include="Reg_Confirmation.aspx.designer.cs">
       <DependentUpon>Reg_Confirmation.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Reg_Other.aspx.cs">
-      <DependentUpon>Reg_Other.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Reg_Other.aspx.designer.cs">
-      <DependentUpon>Reg_Other.aspx</DependentUpon>
-    </Compile>
     <Compile Include="SecurePageBase.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -213,6 +216,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Includes\ChineseSchool.Master" />
+    <Content Include="Documents\201415registrationform.pdf" />
+    <Content Include="Documents\LISOCRegistrationForm2013-14.doc" />
     <None Include="Properties\PublishProfiles\Chinese School.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

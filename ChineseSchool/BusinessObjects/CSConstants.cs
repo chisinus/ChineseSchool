@@ -29,5 +29,20 @@ namespace ChineseSchool.BusinessObjects
             New = 1,
             Edit = 2
         }
+
+        public enum ActivityTypes
+        {
+            None = 0,
+            CreateUserAccount = 1,
+            UpdateuserAccount = 2
+        }
+
+        public enum VolunteerTypes
+        {
+            None = 0,
+            Admin = 1,
+            ClassParent = 2,
+            Other = 99
+        }
     }
 }

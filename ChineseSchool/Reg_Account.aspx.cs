@@ -30,6 +30,11 @@ namespace ChineseSchool
                 ctrlCity.Text = user.City;
                 ctrlState.SelectedValue = ((int)user.State.StateID).ToString();
                 ctrlPostalCode.Text = user.PostalCode;
+                ctrlEMGContact.Text = user.EMGContact;
+                ctrlEMGPhone.Text = user.EMGPhone;
+                ctrlVolunteerAdmin.Checked = user.HasVolunteer(CSConstants.VolunteerTypes.Admin);
+                ctrlVolunteerClassParent.Checked = user.HasVolunteer(CSConstants.VolunteerTypes.ClassParent);
+                ctrlVolunteerOther.Checked = user.HasVolunteer(CSConstants.VolunteerTypes.Other);
             }
             else
             {
@@ -47,6 +52,8 @@ namespace ChineseSchool
                 ctrlCity.Text = "city";
                 ctrlState.SelectedIndex = 1;
                 ctrlPostalCode.Text = "12345";
+                ctrlEMGContact.Text = "emg contact";
+                ctrlEMGPhone.Text = "emg phone";
 #endif
             }
         }
@@ -70,6 +77,16 @@ namespace ChineseSchool
             user.State = new StateData { StateID = Toolbox.StringToInt(ctrlState.SelectedValue) };
             user.PostalCode = ctrlPostalCode.Text.Trim();
             user.UserType = CSConstants.UserTypes.User;
+            user.EMGContact = ctrlEMGContact.Text.Trim();
+            user.EMGPhone = ctrlEMGPhone.Text.Trim();
+
+            user.Volunteers = new List<VolunteerData>();
+            if (ctrlVolunteerAdmin.Checked)
+                user.Volunteers.Add(new VolunteerData(CSConstants.VolunteerTypes.Admin));
+            if (ctrlVolunteerClassParent.Checked)
+                user.Volunteers.Add(new VolunteerData(CSConstants.VolunteerTypes.ClassParent));
+            if (ctrlVolunteerOther.Checked)
+                user.Volunteers.Add(new VolunteerData(CSConstants.VolunteerTypes.Other));
 
             bool result;
             if (GetEditMode() == CSConstants.EditMode.New)
@@ -82,7 +99,7 @@ namespace ChineseSchool
                 result = CSAgent.UpdateUser(user, GetSqlConnection());
             }
 
-            if (user.UserID < 0)
+            if (!result)
             {
                 ctrlMessage.Text = CSMessage.ERR_CompleteRequest;
                 return;
@@ -95,7 +112,10 @@ namespace ChineseSchool
 
         private bool ValidateData()
         {
-            if (Toolbox.IsEmpty(ctrlFirstname.Text) || Toolbox.IsEmpty(ctrlLastname.Text) || Toolbox.IsEmpty(ctrlEmail.Text) || Toolbox.IsEmpty(ctrlEmail2.Text) || Toolbox.IsEmpty(ctrlPassword.Text) || Toolbox.IsEmpty(ctrlPassword2.Text))
+            if (Toolbox.IsEmpty(ctrlFirstname.Text) || Toolbox.IsEmpty(ctrlLastname.Text) ||
+                Toolbox.IsEmpty(ctrlEmail.Text) || Toolbox.IsEmpty(ctrlEmail2.Text) || 
+                Toolbox.IsEmpty(ctrlPassword.Text) || Toolbox.IsEmpty(ctrlPassword2.Text) ||
+                Toolbox.IsEmpty(ctrlEMGContact.Text) || Toolbox.IsEmpty(ctrlEMGPhone.Text))
             {
                 ctrlMessage.Text = CSMessage.ERR_RequiredField;
                 return false;

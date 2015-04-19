@@ -14,9 +14,13 @@ namespace ChineseSchool.BusinessObjects
         public string ChildFirstname { get; set; }
         public string ChildLastname { get; set; }
         public CSConstants.Genders Gender { get; set; }
-        public int YOB { get; set; }
+        public string YOB { get; set; }
 
         public List<ClassData> PickedClasses { get; set; }
+
+        public string SeriousIllness { get; set; }
+        public string HeartDisease { get; set; }
+        public string Medicine { get; set; }
         #endregion properties
 
         #region constructor
@@ -26,7 +30,10 @@ namespace ChineseSchool.BusinessObjects
             ChildFirstname = Toolbox.GetDBValue<string>(reader, "ChildFirstname");
             ChildLastname = Toolbox.GetDBValue<string>(reader, "ChildLastname");
             Gender = (CSConstants.Genders)Toolbox.GetDBValue<int>(reader, "GenderID");
-            YOB = Toolbox.GetDBValue<int>(reader, "YOB");
+            YOB = Toolbox.GetDBValue<string>(reader, "YOB");
+            SeriousIllness = Toolbox.GetDBValue<string>(reader, "SeriousIllness");
+            HeartDisease = Toolbox.GetDBValue<string>(reader, "HeartDisease");
+            Medicine = Toolbox.GetDBValue<string>(reader, "Medicine");
 
             PickedClasses = new List<ClassData>();
 

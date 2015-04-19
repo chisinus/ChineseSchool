@@ -11,11 +11,10 @@
         width="700px"
         AutoGenerateColumns="False" 
         GridLines="None" 
-        EnableAJAX="True" 
         AllowMultiRowSelection="True" 
         AllowPaging="True" 
         AllowSorting="True" 
-        PageSize="20" RadControlsDir="/"
+        PageSize="20"
         EnableEmbeddedSkins="false" 
         Skin="WebBlue"
         AllowFilteringByColumn="false"
@@ -46,8 +45,8 @@
                 <rad:GridBoundColumn UniqueName="GradeName" DataField="GradeName" HeaderText="Grade" HtmlEncode="true" ShowFilterIcon="false" >
                     <HeaderStyle Width="100px" />
                 </rad:GridBoundColumn>
-                <rad:GridBoundColumn UniqueName="ClassName" DataField="ClassName" HeaderText="Class" HtmlEncode="true" ShowFilterIcon="false" >
-                    <HeaderStyle Width="100px" />
+                <rad:GridBoundColumn UniqueName="TeacherName" DataField="TeacherName" HeaderText="Teacher" HtmlEncode="true" ShowFilterIcon="false" >
+                    <HeaderStyle Width="200px" />
                 </rad:GridBoundColumn>
                 <rad:GridButtonColumn CommandName="Delete" Text="Delete" UniqueName="DeleteColumn" >
                 </rad:GridButtonColumn>

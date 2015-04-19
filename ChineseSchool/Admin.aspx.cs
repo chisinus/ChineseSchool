@@ -38,9 +38,7 @@ namespace ChineseSchool
 
                 foreach (DataColumn column in dataTable.Columns)
                 {
-                    object item = row[column];
-
-                    currentRow.Add(item.ToString());
+                    currentRow.Add(CsvQuote(row[column].ToString().Trim()));
                 }
 
                 rows.Add(string.Join(",", currentRow.ToArray()));
@@ -55,7 +53,38 @@ namespace ChineseSchool
             Response.End();
         }
 
-        protected void ctrlLogout_Click(object sender, EventArgs e)
+        private string CsvQuote(string text)
+        {
+            if (text == null) return string.Empty;
+
+            bool containsQuote = false;
+            bool containsComma = false;
+            int len = text.Length;
+            for (int i = 0; i < len && (!containsComma || !containsQuote); i++)
+            {
+                char ch = text[i];
+                if (ch == '"')
+                {
+                    containsQuote = true;
+                }
+                else if (ch == ',')
+                {
+                    containsComma = true;
+                }
+            }
+
+            bool mustQuote = containsComma || containsQuote;
+
+            if (containsQuote)
+                text = text.Replace("\"", "\"\"");
+
+            if (mustQuote)
+                return "\"" + text + "\"";  // Quote the cell and replace embedded quotes with double-quote
+
+            return text;
+        }
+
+       protected void ctrlLogout_Click(object sender, EventArgs e)
         {
             GoToLoginPage();
         }

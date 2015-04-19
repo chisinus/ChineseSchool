@@ -12,8 +12,8 @@ namespace ChineseSchool.BusinessObjects
         #region properties
         public int ClassID { get; set; }
         public string ClassName { get; set; }
-        public int GradeID { get; set; }        //kept just in case class/grade are multi-to-multi. update after figure out grade/class relationship.
-        public string GradeName { get; set; }
+        public GradeData Grade { get; set; }        //kept just in case class/grade are multi-to-multi. update after figure out grade/class relationship.
+        public TeacherData Teacher { get; set; }
         #endregion properties
 
         #region constructor
@@ -24,7 +24,8 @@ namespace ChineseSchool.BusinessObjects
 
         public ClassData()
         {
-            // TODO: Complete member initialization
+            Grade = new GradeData();
+            Teacher = new TeacherData();
         }
         #endregion constructor
 
@@ -32,8 +33,8 @@ namespace ChineseSchool.BusinessObjects
         {
             ClassID = Toolbox.GetDBValue<int>(reader, "ClassID");
             ClassName = Toolbox.GetDBValue<string>(reader, "ClassName");
-            GradeID = Toolbox.GetDBValue<int>(reader, "GradeID");
-            GradeName = Toolbox.GetDBValue<string>(reader, "GradeName");
+            Grade = new GradeData(reader);
+            Teacher = new TeacherData(reader);
         }
     }
 }

@@ -121,6 +121,51 @@ namespace ChineseSchool {
         protected global::System.Web.UI.WebControls.TextBox ctrlPostalCode;
         
         /// <summary>
+        /// ctrlVolunteerAdmin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox ctrlVolunteerAdmin;
+        
+        /// <summary>
+        /// ctrlVolunteerClassParent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox ctrlVolunteerClassParent;
+        
+        /// <summary>
+        /// ctrlVolunteerOther control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox ctrlVolunteerOther;
+        
+        /// <summary>
+        /// ctrlEMGContact control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ctrlEMGContact;
+        
+        /// <summary>
+        /// ctrlEMGPhone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ctrlEMGPhone;
+        
+        /// <summary>
         /// ctrlPassword control.
         /// </summary>
         /// <remarks>

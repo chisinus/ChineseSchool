@@ -14,31 +14,25 @@ namespace ChineseSchool
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (IsPostBack) return;
+            UpdateOtherSection();
 
-            PopulateGrade();
+            if (IsPostBack) return;
 
             SetChildren(GetCurrentUser().Children);
 
             ctrlChildren.UpdateUI(GetCurrentUser().Children, true);
         }
 
-        private void PopulateGrade()
+        private void UpdateOtherSection()
         {
-            List<ClassData> classes = CSAgent.GetClassList(GetSqlConnection());
-            if (classes == null) return;
-
-            ctrlClass.Items.Clear();
-            ctrlClass.Items.Add(new ListItem("Select One", "0"));
-            foreach (ClassData myClass in classes)
-            {
-                ctrlClass.Items.Add(new ListItem(myClass.ClassName + " / " + myClass.GradeName, myClass.ClassID.ToString()));
-            }
+            ctrlSeriousIllnessInfo.Style.Add("display", ctrlSeriousIllness.Checked?"inline":"none");
+            ctrlHeartDiseaseInfo.Style.Add("display", ctrlHeartDisease.Checked?"inline":"none");
+            ctrlMedicineInfo.Style.Add("display", ctrlMedicine.Checked?"inline":"none");
         }
 
         protected void ctrlAdd_Click(object sender, EventArgs e)
         {
-            if (!ValidateData())
+            if (!ValidateChildData())
                 return;
 
             ChildData child = new ChildData();
@@ -46,8 +40,11 @@ namespace ChineseSchool
             child.ChildFirstname = ctrlFirstname.Text.Trim();
             child.ChildLastname = ctrlLastname.Text.Trim();
             child.Gender = (CSConstants.Genders)Toolbox.StringToInt(ctrlGender.SelectedValue);
-            child.YOB = Toolbox.StringToInt(ctrlYOB.Text.Trim());
-            child.PickedClasses.Add(CSAgent.GetClassInfo(Toolbox.StringToInt(ctrlClass.SelectedValue), GetSqlConnection()));
+            child.YOB = ctrlYOB.Text.Trim();
+            child.PickedClasses.Add(CSAgent.GetClassInfoByGradeAndTeacher(Toolbox.StringToInt(ctrlGrades.SelectedValue), Toolbox.StringToInt(ctrlTeachers.SelectedValue), GetSqlConnection()));
+            child.SeriousIllness = ctrlSeriousIllnessInfo.Text.Trim();
+            child.HeartDisease = ctrlHeartDiseaseInfo.Text.Trim();
+            child.Medicine = ctrlMedicineInfo.Text.Trim();
 
             List<ChildData> children = GetChildren();
             int id = -1;
@@ -63,20 +60,54 @@ namespace ChineseSchool
             SetChildren(children);
 
             ctrlChildren.UpdateUI(children, true);
+
+            ClearForm();
         }
 
-        private bool ValidateData()
+        private void ClearForm()
         {
-            if (Toolbox.IsEmpty(ctrlFirstname.Text) || Toolbox.IsEmpty(ctrlLastname.Text) || (ctrlClass.SelectedIndex == 0))
+            ctrlMessage.Text = "";
+            ctrlFirstname.Text = "";
+            ctrlLastname.Text = "";
+            ctrlGender.SelectedIndex = 0;
+            ctrlYOB.Text = "";
+            ctrlGradesCDD.SelectedValue = "0";
+            ctrlMedicine.Checked = false;
+            ctrlMedicineInfo.Text = "";
+            ctrlSeriousIllness.Checked = false;
+            ctrlSeriousIllnessInfo.Text = "";
+            ctrlHeartDisease.Checked = false;
+            ctrlHeartDiseaseInfo.Text = "";
+
+            UpdateOtherSection();
+        }
+
+        private bool ValidateChildData()
+        {
+            if (Toolbox.IsEmpty(ctrlFirstname.Text) || 
+                Toolbox.IsEmpty(ctrlLastname.Text) || 
+                (Toolbox.StringToInt(ctrlGrades.SelectedValue) <= 0) ||
+                (Toolbox.StringToInt(ctrlTeachers.SelectedValue) <= 0))
             {
                 ctrlMessage.Text = CSMessage.ERR_RequiredField;
                 return false;
             }
 
-            int yob = Toolbox.StringToInt(ctrlYOB.Text.Trim());
-            if (yob < 0)
+            if (!Toolbox.IsEmpty(ctrlYOB.Text))
             {
-                ctrlMessage.Text = "Please enter a valid Year of Birth.";
+                int yob = Toolbox.StringToInt(ctrlYOB.Text.Trim());
+                if ((yob < 0) || (yob > DateTime.Now.Year))
+                {
+                    ctrlMessage.Text = "Please enter a valid Year of Birth.";
+                    return false;
+                }
+            }
+
+            if ((ctrlSeriousIllness.Checked && Toolbox.IsEmpty(ctrlSeriousIllnessInfo.Text)) ||
+                (ctrlHeartDisease.Checked && Toolbox.IsEmpty(ctrlHeartDiseaseInfo.Text)) ||
+                (ctrlMedicine.Checked && Toolbox.IsEmpty(ctrlMedicineInfo.Text)))
+            {
+                ctrlMessage2.Text = CSMessage.ERR_RequiredField;
                 return false;
             }
 
@@ -85,6 +116,8 @@ namespace ChineseSchool
 
         protected void ctrlSubmit_Click(object sender, EventArgs e)
         {
+            if (ValidateFormData()) return;
+
             UserData user = GetCurrentUser();
 
             SqlTransaction tran = GetSqlConnection().BeginTransaction();
@@ -134,6 +167,17 @@ namespace ChineseSchool
                 Response.Redirect("Reg_Confirmation.aspx");
             else
                 Response.Redirect("User.aspx");
+        }
+
+        private bool ValidateFormData()
+        {
+            if (!ctrlAck_Rule.Checked)
+            {
+                ctrlMessage3.Text = "Please accept the terms of this agreement.";
+                return false;
+            }
+
+            return true;
         }
 
         protected void ctrlCancel_Click(object sender, EventArgs e)

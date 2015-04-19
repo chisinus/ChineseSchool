@@ -20,7 +20,8 @@ namespace ChineseSchool.BusinessLogic
         #region Logging
         public static void Logging(string caller, string msg, Exception e)
         {
-            StreamWriter sw = File.CreateText(LoggingPath + "Logging.txt"); // creating file
+            //StreamWriter sw = File.CreateText(LoggingPath + "Logging.txt"); // creating file
+            StreamWriter sw = File.CreateText(@"C:\ProjectLogging\ChineseSchoolLogging.txt"); // creating file
             sw.Write("Caller: " + caller + "\r\n");
             sw.Write("Message: " + msg + "\r\n");
             sw.Write("Exception: " + e.ToString() + "\r\n");

@@ -29,11 +29,11 @@ namespace ChineseSchool.UserControl
             dt.Columns.Add("Gender", typeof(string));
             dt.Columns.Add("YOB", typeof(string));
             dt.Columns.Add("GradeName", typeof(string));
-            dt.Columns.Add("ClassName", typeof(string));
+            dt.Columns.Add("TeacherName", typeof(string));
 
             foreach (ChildData child in children)
             {
-                dt.Rows.Add(child.ChildID, child.ChildLastname, child.ChildFirstname, child.Gender.ToString(), child.YOB, child.PickedClasses[0].GradeName, BuildClassString(child.PickedClasses));
+                dt.Rows.Add(child.ChildID, child.ChildLastname, child.ChildFirstname, child.Gender.ToString(), child.YOB, child.PickedClasses[0].Grade.GradeName, child.PickedClasses[0].Teacher.TeacherName);
             }
 
             ctrlGrid.DataSource = dt;
@@ -41,18 +41,18 @@ namespace ChineseSchool.UserControl
 
         }
 
-        private string BuildClassString(List<ClassData> classList)
-        {
-            if (classList == null || classList.Count == 0) return "";
+        //private string BuildClassString(List<ClassData> classList)
+        //{
+        //    if (classList == null || classList.Count == 0) return "";
 
-            string ret = "";
-            foreach (ClassData c in classList)
-            {
-                ret += ((ret == "") ? "" : @"<br />") + c.ClassName;
-            }
+        //    string ret = "";
+        //    foreach (ClassData c in classList)
+        //    {
+        //        ret += ((ret == "") ? "" : @"<br />") + c.ClassName;
+        //    }
 
-            return ret;
-        }
+        //    return ret;
+        //}
 
         public void ctrlGrid_ItemDataBound(object sender, Telerik.Web.UI.GridItemEventArgs e)
         {

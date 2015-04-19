@@ -2,8 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Label runat="server" ID="ctrlMessage" CssClass="ErrorMessage"></asp:Label>
     <div class="PageTitle">Create Account</div>
+    <asp:Label runat="server" ID="ctrlMessage" CssClass="ErrorMessage"></asp:Label>
     <div class="SectionTitle">Personal Information</div>
     <div class="required">
         <p class="editor-label">First Name: </p>
@@ -51,6 +51,24 @@
         <p class="editor-label">Postal Code: </p>
         <asp:TextBox runat="server" ID="ctrlPostalCode" MaxLength ="5" CssClass="editor-field" />
     </div>
+    <div class="SectionTitle">Volunteer</div>
+    <div>
+        <p class="editor-label">We would like to volunteer:</p>
+        <asp:CheckBox runat="server" ID="ctrlVolunteerAdmin" Text="Administrator"  />
+        <asp:CheckBox runat="server" ID="ctrlVolunteerClassParent" Text="Class Parent" />
+        <asp:CheckBox runat="server" ID="ctrlVolunteerOther" Text="Others" />
+    </div>
+
+    <div class="SectionTitle">Emergency Contact</div>
+    <div class="required">
+        <p class="editor-label">Name: </p>
+        <asp:TextBox runat="server" ID="ctrlEMGContact" MaxLength ="100" CssClass="editor-field" />
+    </div>
+    <div class="required">
+        <p class="editor-label">Phone: </p>
+        <asp:TextBox runat="server" ID="ctrlEMGPhone" MaxLength ="20" CssClass="editor-field" />
+    </div>
+
     <div class="SectionTitle">Login Information</div>
     <div class="required">
         <p class="editor-label required">Password: </p>

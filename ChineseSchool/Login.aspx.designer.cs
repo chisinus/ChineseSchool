@@ -40,15 +40,6 @@ namespace ChineseSchool {
         protected global::System.Web.UI.WebControls.TextBox ctrlPassword;
         
         /// <summary>
-        /// ctrlLogin control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ctrlLogin;
-        
-        /// <summary>
         /// ctrlRegister control.
         /// </summary>
         /// <remarks>
@@ -56,5 +47,14 @@ namespace ChineseSchool {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ctrlRegister;
+        
+        /// <summary>
+        /// ctrlLogin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ctrlLogin;
     }
 }

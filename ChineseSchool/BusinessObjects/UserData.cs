@@ -23,8 +23,14 @@ namespace ChineseSchool.BusinessObjects
         public StateData State { get; set; }
         public string PostalCode { get; set; }
         public CSConstants.UserTypes UserType { get; set; }
+        public string EMGContact { get; set; }
+        public string EMGPhone { get; set; }
+        public bool Ack_Rule { get; set; }
+        public bool Ack_Medical { get; set; }
+        public bool Ack_Publish { get; set; }
 
         public List<ChildData> Children { get; set; }
+        public List<VolunteerData> Volunteers { get; set; }
         #endregion properties
 
         #region constructors
@@ -50,6 +56,11 @@ namespace ChineseSchool.BusinessObjects
             State = new StateData(reader);
             PostalCode = Toolbox.GetDBValue<string>(reader, "PostalCode");
             UserType = (CSConstants.UserTypes)Toolbox.GetDBValue<int>(reader, "UserTypeID");
+            EMGContact = Toolbox.GetDBValue<string>(reader, "EMGContact");
+            EMGPhone = Toolbox.GetDBValue<string>(reader, "EMGPhone");
+            Ack_Rule = Toolbox.GetDBValue<bool>(reader, "Ack_Rule");
+            Ack_Medical = Toolbox.GetDBValue<bool>(reader, "Ack_Medical");
+            Ack_Publish = Toolbox.GetDBValue<bool>(reader, "Ack_Publish");
 
             AddItem(reader);
         }
@@ -74,6 +85,11 @@ namespace ChineseSchool.BusinessObjects
         private ChildData GetChild(int childID)
         {
             return Children.FirstOrDefault(c => c.ChildID == childID);
+        }
+
+        internal bool HasVolunteer(CSConstants.VolunteerTypes volunteerTypes)
+        {
+            return Volunteers.Find(v => v.VolunteerType == volunteerTypes) != null;
         }
     }
 }

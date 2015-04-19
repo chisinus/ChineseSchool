@@ -15,6 +15,7 @@ div {
     padding-top: 15px;
     font-size: medium;
     font-weight:bold;
+    margin-bottom: 1em;
 }
 
 div.workingarea 
@@ -46,7 +47,7 @@ div.workingarea
 
 .editor-field, .display-field 
 {
-    border:1px solid blue;
+    /*border:1px solid blue;*/
     margin:0.5em 0 0 0;   
     min-height:1.5em;
 }
@@ -61,4 +62,15 @@ div.workingarea
 
 .button {
     width:75px;
+}
+
+.long-field 
+{
+    margin:0.5em 0 0 0;   
+    min-height:1.5em;
+    width : 600px;
+}
+
+.hidden {
+    display:none;   
 }

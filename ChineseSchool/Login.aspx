@@ -8,6 +8,6 @@
     <br />
     <p class="editor-label">Password: </p><asp:TextBox runat="server" ID="ctrlPassword" TextMode="Password" CssClass="editor-field" />
     <br /><br /><br />
-    <asp:Button runat="server" ID="ctrlLogin" OnClick="ctrlLogin_Click" Text="Log in" style="margin-right:20px" />
-    <asp:Button runat="server" ID="ctrlRegister" OnClick="ctrlRegister_Click" Text="Register" style="float:right; margin-right:400px" />
+    <asp:Button runat="server" ID="ctrlRegister" OnClick="ctrlRegister_Click" Text="Register" style="margin-right:20px"/>
+    <asp:Button runat="server" ID="ctrlLogin" OnClick="ctrlLogin_Click" Text="Log in"  style="float:right; margin-right:400px" />
 </asp:Content>
