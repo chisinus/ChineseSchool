@@ -37,3 +37,9 @@
     <p class="editor-label">Postal Code: </p>
     <asp:Label runat="server" ID="ctrlPostalCode" CssClass="display-text" />
 </div>
+
+<asp:Panel ID="ctrlVolunteerPanel" runat="server">
+    <div class="SectionTitle">Volunteer</div>
+    <div style="margin-left:100px"><asp:PlaceHolder ID="ctrlVolunteerPH" runat="server" /></div>
+</asp:Panel>
+

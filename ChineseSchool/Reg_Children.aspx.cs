@@ -18,9 +18,22 @@ namespace ChineseSchool
 
             if (IsPostBack) return;
 
+            UpdateAcknowledgeSection();
+
             SetChildren(GetCurrentUser().Children);
 
             ctrlChildren.UpdateUI(GetCurrentUser().Children, true);
+        }
+
+        private void UpdateAcknowledgeSection()
+        {
+            UserData user = GetCurrentUser();
+            ctrlAck_Rule.Checked = user.Ack_Rule;
+            ctrlAck_Medical.Checked = user.Ack_Medical;
+            ctrlAck_Publish.Checked = user.Ack_Publish;
+
+            if (GetEditMode() == CSConstants.EditMode.Edit)
+                ctrlAck_RuleSection.Style.Add("display", "none");
         }
 
         private void UpdateOtherSection()
@@ -116,23 +129,29 @@ namespace ChineseSchool
 
         protected void ctrlSubmit_Click(object sender, EventArgs e)
         {
-            if (ValidateFormData()) return;
+            if (!ValidateFormData()) return;
 
             UserData user = GetCurrentUser();
 
             SqlTransaction tran = GetSqlConnection().BeginTransaction();
 
+            if (GetEditMode() == CSConstants.EditMode.New)
+            {
+                user.UserID = CSAgent.InsertUser(user, GetSqlConnection(), tran);
+                if (user.UserID < 0)
+                {
+                    Toolbox.EndTransaction(tran, false);
+                    ctrlMessage.Text = CSMessage.ERR_CompleteRequest;
+                    return;
+                }
+            }
+
             if (GetEditMode() == CSConstants.EditMode.Edit && 
                 !CSAgent.DeleteChildren(user.UserID, GetSqlConnection(), tran))
             {
-                ctrlMessage.Text = "Failed to submit your request.";
+                ctrlMessage.Text = CSMessage.ERR_CompleteRequest;
                 Toolbox.EndTransaction(tran, false);
                 return;
-            }
-
-            if (user.Children.Count == 0)
-            {
-                Response.Redirect("Reg_Confirmation.aspx");
             }
 
             bool result = true;
@@ -152,7 +171,10 @@ namespace ChineseSchool
                     break;
                 }
             }
-            
+
+            result = result &&
+                        CSAgent.UpdateUserAcknowledges(user.UserID, ctrlAck_Rule.Checked, ctrlAck_Medical.Checked, ctrlAck_Publish.Checked, GetSqlConnection(), tran);
+
             Toolbox.EndTransaction(tran, result);
 
             if (!result)
@@ -174,6 +196,7 @@ namespace ChineseSchool
             if (!ctrlAck_Rule.Checked)
             {
                 ctrlMessage3.Text = "Please accept the terms of this agreement.";
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "Error", "window.scrollTo(0, document.body.scrollHeight+30);", true);
                 return false;
             }
 

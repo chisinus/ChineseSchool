@@ -24,7 +24,7 @@ namespace ChineseSchool.BusinessLogic
             return Toolbox.GetDBObject_Container<UserData>("GetUserByEmail", "procUser_GetUserByEmail", conn, parameters);
         }
 
-        public static int InsertUser(UserData user, SqlConnection conn)
+        public static int InsertUser(UserData user, SqlConnection conn, SqlTransaction tran)
         {
             if ((user == null) || (conn == null)) return -1;
 
@@ -46,8 +46,6 @@ namespace ChineseSchool.BusinessLogic
 													new SqlParameter("@NewID", SqlDbType.Int) { Direction= ParameterDirection.Output}
 												};
 
-            SqlTransaction tran = conn.BeginTransaction();
-
             int userID = Toolbox.WriteDataToDBWithID("InsertUser", "procUser_InsertUser", conn, parameters, tran);
             bool result = userID > 0;
 
@@ -63,8 +61,6 @@ namespace ChineseSchool.BusinessLogic
                 result = result &&
                          ActivityAgent.InsertActivity(userID, CSConstants.ActivityTypes.CreateUserAccount, "", conn, tran);
             }
-
-            Toolbox.EndTransaction(tran, result);
 
             return result ? userID : -1;
         }
@@ -249,7 +245,7 @@ namespace ChineseSchool.BusinessLogic
 
         private static bool DeleteUserVolunteer(int userID, SqlConnection conn, SqlTransaction tran)
         {
-            if ((conn == null) || (tran == null)) return false;
+            if ((userID<=0) || (conn == null) || (tran == null)) return false;
 
             SqlParameter[] parameters = new SqlParameter[] 
 												{ 
@@ -257,6 +253,21 @@ namespace ChineseSchool.BusinessLogic
 												};
 
             return Toolbox.WriteDataToDB("DeleteUserVolunteer", "procUser_DeleteVolunteer", conn, parameters, tran);
+        }
+
+        internal static bool UpdateUserAcknowledges(int userID, bool ackRule, bool actMedical, bool actPublish, SqlConnection conn, SqlTransaction tran)
+        {
+            if ((userID <= 0) || (conn == null) || (tran == null)) return false;
+
+            SqlParameter[] parameters = new SqlParameter[] 
+												{ 
+                                                    new SqlParameter("@UserID", userID),
+                                                    new SqlParameter("@AckRule", ackRule),
+                                                    new SqlParameter("@AckMedial", actMedical),
+                                                    new SqlParameter("@ActPublish", actPublish)
+												};
+
+            return Toolbox.WriteDataToDB("UpdateUserAcknowledges", "procUser_UpdateAcknowledges", conn, parameters, tran);
         }
     }
 }

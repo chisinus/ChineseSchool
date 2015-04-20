@@ -22,6 +22,16 @@ namespace ChineseSchool.UserControl
             ctrlCity.Text = user.City;
             ctrlState.Text = user.State.StateName;
             ctrlPostalCode.Text = user.PostalCode;
+
+            if (user.Volunteers.Count == 0)
+            {
+                ctrlVolunteerPanel.Visible = false;
+                return;
+            }
+
+            Literal s = new Literal();
+            s.Text = user.Volunteers.Aggregate(string.Empty, (current, next)=>current + @"<BR />" + next.VolunteerDesc, ss=>ss.Substring(6));
+            ctrlVolunteerPH.Controls.Add(s);
         }
     }
 }

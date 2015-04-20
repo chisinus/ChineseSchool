@@ -38,6 +38,7 @@ namespace ChineseSchool.BusinessObjects
         {
             Children = new List<ChildData>();
             State = new StateData();
+            Volunteers = new List<VolunteerData>();
         }
         #endregion constructors
 
@@ -65,12 +66,18 @@ namespace ChineseSchool.BusinessObjects
             AddItem(reader);
         }
 
-        public bool HasSameKeyValue(System.Data.SqlClient.SqlDataReader reader, string comparingFieldName)
+        public bool HasSameKeyValue(SqlDataReader reader, string comparingFieldName)
         {
             return UserID == Toolbox.GetDBValue<int>(reader, "UserID");
         }
 
-        public void AddItem(System.Data.SqlClient.SqlDataReader reader)
+        public void AddItem(SqlDataReader reader)
+        {
+            AddChild(reader);
+            AddVolunteer(reader);
+        }
+
+        private void AddChild(SqlDataReader reader)
         {
             int childID = Toolbox.GetDBValue<int>(reader, "ChildID", 0);
             if (childID <= 0) return;
@@ -80,6 +87,15 @@ namespace ChineseSchool.BusinessObjects
                 Children.Add(new ChildData(reader));
             else
                 child.AddClass(reader);
+        }
+
+        private void AddVolunteer(SqlDataReader reader)
+        {
+            CSConstants.VolunteerTypes vType = (CSConstants.VolunteerTypes)Toolbox.GetDBValue<int>(reader, "VolunteerTypeID", 0);
+            if (vType == CSConstants.VolunteerTypes.None) return;
+
+            if (!HasVolunteer(vType))
+                Volunteers.Add(new VolunteerData(reader));
         }
 
         private ChildData GetChild(int childID)

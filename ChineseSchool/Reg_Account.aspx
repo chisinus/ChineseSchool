@@ -3,6 +3,11 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="PageTitle">Create Account</div>
+    <div style="margin-top:1em;">
+        <a href="Documents/LISOCRegistrationForm2013-14.doc" target="_blank">2013-2014 Registration Form</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="Documents/201415registrationform.pdf" target="_blank">2014-2015 Registration Form</a>
+    </div>
     <asp:Label runat="server" ID="ctrlMessage" CssClass="ErrorMessage"></asp:Label>
     <div class="SectionTitle">Personal Information</div>
     <div class="required">
@@ -53,12 +58,12 @@
     </div>
     <div class="SectionTitle">Volunteer</div>
     <div>
-        <p class="editor-label">We would like to volunteer:</p>
-        <asp:CheckBox runat="server" ID="ctrlVolunteerAdmin" Text="Administrator"  />
+        <p class="editor-label" style="margin-top:-1px;">We would like to volunteer:</p>
+        <asp:CheckBox runat="server" ID="ctrlVolunteerAdmin" Text="Administrator" />
         <asp:CheckBox runat="server" ID="ctrlVolunteerClassParent" Text="Class Parent" />
         <asp:CheckBox runat="server" ID="ctrlVolunteerOther" Text="Others" />
     </div>
-
+    <br /><br />
     <div class="SectionTitle">Emergency Contact</div>
     <div class="required">
         <p class="editor-label">Name: </p>

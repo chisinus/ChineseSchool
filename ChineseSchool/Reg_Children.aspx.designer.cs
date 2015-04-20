@@ -184,6 +184,15 @@ namespace ChineseSchool {
         protected global::System.Web.UI.WebControls.Label ctrlMessage3;
         
         /// <summary>
+        /// ctrlAck_RuleSection control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ctrlAck_RuleSection;
+        
+        /// <summary>
         /// ctrlAck_Rule control.
         /// </summary>
         /// <remarks>

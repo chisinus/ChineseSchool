@@ -88,21 +88,14 @@ namespace ChineseSchool
             if (ctrlVolunteerOther.Checked)
                 user.Volunteers.Add(new VolunteerData(CSConstants.VolunteerTypes.Other));
 
-            bool result;
-            if (GetEditMode() == CSConstants.EditMode.New)
+            if (GetEditMode() == CSConstants.EditMode.Edit)
             {
-                user.UserID = CSAgent.InsertUser(user, GetSqlConnection());
-                result = user.UserID > 0;
-            }
-            else
-            {
-                result = CSAgent.UpdateUser(user, GetSqlConnection());
-            }
-
-            if (!result)
-            {
-                ctrlMessage.Text = CSMessage.ERR_CompleteRequest;
-                return;
+                bool result = CSAgent.UpdateUser(user, GetSqlConnection());
+                if (!result)
+                {
+                    ctrlMessage.Text = CSMessage.ERR_CompleteRequest;
+                    return;
+                }
             }
 
             SetCurrentUser(user);

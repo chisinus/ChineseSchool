@@ -69,7 +69,6 @@
     <Content Include="Images\Banner.jpg" />
     <Content Include="Images\Logo.jpg" />
     <Content Include="Login.aspx" />
-    <Content Include="Register-not-used.aspx" />
     <Content Include="Reg_Account.aspx" />
     <Content Include="Reg_ChildrenClasses.aspx" />
     <Content Include="Reg_Children.aspx" />
@@ -147,13 +146,6 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Register-not-used.aspx.cs">
-      <DependentUpon>Register-not-used.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Register-not-used.aspx.designer.cs">
-      <DependentUpon>Register-not-used.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Reg_Account.aspx.cs">
       <DependentUpon>Reg_Account.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -18,13 +18,24 @@
                 ctrl.value = "";
             }
         }
+
+        function ValidateForm() {
+            var ctrl = document.getElementById("ctrlAck_Rule");
+            if (!ctrl.checked)
+            {
+                alert("Please accept the terms of this agreement.");
+                return false;
+            }
+
+            return true;
+        }
     </script>
     <div class="PageTitle">Create Account - Add Children</div>
     
     <uc1:UC_ChildList runat="server" ID="ctrlChildren" />
 
     <div class="SectionTitle">Child Information</div>
-    <asp:Label runat="server" ID="ctrlMessage" CssClass="ErrorMessage"></asp:Label>
+    <asp:Label runat="server" ID="ctrlMessage" ViewStateMode="Disabled" CssClass="ErrorMessage"></asp:Label>
     <div class="required">
         <p class="editor-label">Child First Name: </p>
         <asp:TextBox runat="server" ID="ctrlFirstname" MaxLength ="30" CssClass="editor-field" />
@@ -69,7 +80,7 @@
             Category ="Teacher" />
     </div>
     <div class="SectionTitle">Other</div>
-    <asp:Label runat="server" ID="ctrlMessage2" CssClass="ErrorMessage"></asp:Label>
+    <asp:Label runat="server" ID="ctrlMessage2" ViewStateMode="Disabled" CssClass="ErrorMessage"></asp:Label>
     <div>
         <p>1. Has your child had any serious illness, injury, operation or communicable disease since September of last year? Specify please,if yes. </p>
         <div>
@@ -104,13 +115,13 @@
     My child and I have read and agree that we will follow the Code of Conducts of LISOC, and the other school regulations. School website www.lisoc.org provides with the full contents.
     <br /><br />
     
-    <asp:Label runat="server" ID="ctrlMessage3" CssClass="ErrorMessage"></asp:Label>
-    <asp:CheckBox runat="server" ID="ctrlAck_Rule" /> <span style="color : red">*</span> I agree to obey all LISOC Rules, Policy and Safety guidelines.
-    <asp:CheckBox runat="server" ID="ctrlAck_Medical" /> I allow LISOC to release my kids’ medical information when necessary
-    <asp:CheckBox runat="server" ID="ctrlAck_Publish" /> I agree LISOC to publish/use my kids’ photo or media for education purpose
+    <asp:Label runat="server" ID="ctrlMessage3" ClientIDMode="Static" ViewStateMode="Disabled" CssClass="ErrorMessage"></asp:Label>
+    <p runat="server" id="ctrlAck_RuleSection"><asp:CheckBox runat="server" ID="ctrlAck_Rule" ClientIDMode="Static" /> <span style="color : red">*</span> I agree to obey all LISOC Rules, Policy and Safety guidelines.</p>
+    <p><asp:CheckBox runat="server" ID="ctrlAck_Medical" /> I allow LISOC to release my kids’ medical information when necessary</p>
+    <p><asp:CheckBox runat="server" ID="ctrlAck_Publish" /> I agree LISOC to publish/use my kids’ photo or media for education purpose</p>
     
     <div style="margin-top:3em;">
         <asp:Button runat="server" ID="ctrlCancel" OnClick="ctrlCancel_Click" Text="Cancel" CssClass="button" />
-        <asp:Button runat="server" ID="ctrlSubmit" OnClick="ctrlSubmit_Click" Text="Finish" CssClass="button" style="margin-right:0px;float:right" />
+        <asp:Button runat="server" ID="ctrlSubmit" OnClick="ctrlSubmit_Click" OnClientClick="return ValidateForm();" Text="Finish" CssClass="button" style="margin-right:0px;float:right" />
     </div>
 </asp:Content>

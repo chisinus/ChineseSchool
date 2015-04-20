@@ -1,8 +1,10 @@
-﻿1. Finish Reg_Other page
-2. Finish Reg_Children page
-3. Add two documents to Registration form.
-4. Log (pending for testing)
-5. Teacher (pending for test)
-6. Acknowledge ( 3 questions)
-7. New pics (pending for testing)
-8. If not acknowledge
+﻿1. Finish Reg_Other page (done)
+2. Finish Reg_Children page (done)
+3. Add two documents to Registration form. (done)
+4. Log (done)
+5. Teacher (done)
+6. Acknowledge ( 3 questions) done
+7. New pics (done)
+8. If not acknowledge  (done, create user after acknowledge)
+9. Wrte a method to test error log on server
+10. finish Export (three volunteer, class, etc)
