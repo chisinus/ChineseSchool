@@ -27,7 +27,8 @@ namespace ChineseSchool.BusinessLogic
 												{ 
 													new SqlParameter("@Caller", caller),
 													new SqlParameter("@Message", msg),
-													new SqlParameter("@Exception", e.StackTrace)
+                                                    new SqlParameter("@ExceptionMessage", e.Message),
+													new SqlParameter("@StackTrace", e.StackTrace == null ? "no exception" : e.StackTrace)
 												};
 
             Toolbox.WriteDataToDB("Logging", "procSys_InsertLog", conn, parameters);

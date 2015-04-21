@@ -6,5 +6,5 @@
 6. Acknowledge ( 3 questions) done
 7. New pics (done)
 8. If not acknowledge  (done, create user after acknowledge)
-9. Wrte a method to test error log on server
+9. Wrte a method to test error log on server (DONE)
 10. finish Export (three volunteer, class, etc)
