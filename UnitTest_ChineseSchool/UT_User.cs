@@ -44,11 +44,10 @@ namespace UnitTest_ChineseSchool
 
                 SqlConnection conn = Toolbox.OpenConnection();
 
-                SqlTransaction tran = conn.BeginTransaction();
-                int userID = CSAgent.InsertUser(user, conn, tran);
-                Assert.IsTrue(userID > 0);
+                //int userID = CSAgent.InsertUser(user, conn);
+                //Assert.IsTrue(userID > 0);
 
-                Toolbox.CloseConnection(conn, tran, false);
+                Toolbox.CloseConnection(conn);
 
                 ts.Dispose();
             }
@@ -61,19 +60,20 @@ namespace UnitTest_ChineseSchool
             {
                 UserData user = BuildUserData(1);
 
-                SqlConnection conn = Toolbox.OpenConnection();
+                //SqlConnection conn = Toolbox.OpenConnection();
 
-                SqlTransaction tran = conn.BeginTransaction();
-                int userID = CSAgent.InsertUser(user, conn, tran);
-                Assert.IsTrue(userID > 0);
+                //int userID = CSAgent.InsertUser(user, conn);
+                //Assert.IsTrue(userID > 0);
 
-                foreach (ChildData child in user.Children)
-                {
-                    int childID = CSAgent.InsertChild(userID, child, conn, tran);
-                    Assert.IsTrue(childID > 0);
-                }
+                //SqlTransaction tran = conn.BeginTransaction();
 
-                Toolbox.CloseConnection(conn, tran, true);
+                //foreach (ChildData child in user.Children)
+                //{
+                //    int childID = CSAgent.InsertChild(userID, child, conn, tran);
+                //    Assert.IsTrue(childID > 0);
+                //}
+
+                //Toolbox.CloseConnection(conn, tran, true);
 
                 ts.Dispose();
             }
@@ -123,7 +123,7 @@ namespace UnitTest_ChineseSchool
             child.ChildFirstname = "ChildFirstname" + number;
             child.ChildLastname = "ChildLastname" + number;
             child.Gender = CSConstants.Genders.Male;
-            child.YOB = 2008;
+            child.YOB = "2008";
 
             child.PickedClasses.Add(BuildClass(1));
             child.PickedClasses.Add(BuildClass(2));
@@ -137,7 +137,7 @@ namespace UnitTest_ChineseSchool
 
             myClass.ClassID = 1 + number;
             myClass.ClassName = "Class" + number;
-            myClass.GradeID = 1 + number;
+            myClass.Grade.GradeID = 1 + number;
 
             return myClass;
         }
@@ -146,23 +146,24 @@ namespace UnitTest_ChineseSchool
         {
             UserData user = BuildUserData(number);
 
-            SqlTransaction tran = conn.BeginTransaction();
-            int userID = CSAgent.InsertUser(user, conn, tran);
-            Assert.IsTrue(userID > 0);
+            //int userID = CSAgent.InsertUser(user, conn);
+            //Assert.IsTrue(userID > 0);
 
-            foreach (ChildData child in user.Children)
-            {
-                int childID = CSAgent.InsertChild(userID, child, conn, tran);
-                Assert.IsTrue(childID > 0);
+            //SqlTransaction tran = conn.BeginTransaction();
 
-                foreach (ClassData myClass in child.PickedClasses)
-                {
-                    int childClassID = CSAgent.InsertChildClass(childID, myClass.ClassID, conn, tran);
-                    Assert.IsTrue(childClassID > 0);
-                }
-            }
+            //foreach (ChildData child in user.Children)
+            //{
+            //    int childID = CSAgent.InsertChild(userID, child, conn, tran);
+            //    Assert.IsTrue(childID > 0);
 
-            Toolbox.EndTransaction(tran, true);
+            //    foreach (ClassData myClass in child.PickedClasses)
+            //    {
+            //        int childClassID = CSAgent.InsertChildClass(childID, myClass.ClassID, conn, tran);
+            //        Assert.IsTrue(childClassID > 0);
+            //    }
+            //}
+
+            //Toolbox.EndTransaction(tran, true);
 
             return user;
         }

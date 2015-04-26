@@ -3,11 +3,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="PageTitle">Create Account</div>
-    <div style="margin-top:1em;">
-        <a href="Documents/LISOCRegistrationForm2013-14.doc" target="_blank">2013-2014 Registration Form</a>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="Documents/201415registrationform.pdf" target="_blank">2014-2015 Registration Form</a>
-    </div>
     <asp:Label runat="server" ID="ctrlMessage" CssClass="ErrorMessage"></asp:Label>
     <div class="SectionTitle">Personal Information</div>
     <div class="required">
