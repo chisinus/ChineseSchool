@@ -108,7 +108,8 @@ namespace ChineseSchool
             if (Toolbox.IsEmpty(ctrlFirstname.Text) || Toolbox.IsEmpty(ctrlLastname.Text) ||
                 Toolbox.IsEmpty(ctrlEmail.Text) || Toolbox.IsEmpty(ctrlEmail2.Text) || 
                 Toolbox.IsEmpty(ctrlPassword.Text) || Toolbox.IsEmpty(ctrlPassword2.Text) ||
-                Toolbox.IsEmpty(ctrlEMGContact.Text) || Toolbox.IsEmpty(ctrlEMGPhone.Text))
+                Toolbox.IsEmpty(ctrlEMGContact.Text) || Toolbox.IsEmpty(ctrlEMGPhone.Text) ||
+                Toolbox.IsEmpty(ctrlAddress1.Text) || Toolbox.IsEmpty(ctrlPhone.Text))
             {
                 ctrlMessage.Text = CSMessage.ERR_RequiredField;
                 return false;

@@ -175,6 +175,15 @@ namespace ChineseSchool {
         protected global::System.Web.UI.WebControls.Button ctrlAdd;
         
         /// <summary>
+        /// ctrlComments control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ctrlComments;
+        
+        /// <summary>
         /// ctrlMessage3 control.
         /// </summary>
         /// <remarks>

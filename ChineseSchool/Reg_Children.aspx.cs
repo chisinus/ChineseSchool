@@ -18,16 +18,18 @@ namespace ChineseSchool
 
             if (IsPostBack) return;
 
-            UpdateAcknowledgeSection();
+            UpdateCommentsAndAcknowledgeSection();
 
             SetChildren(GetCurrentUser().Children);
 
             ctrlChildren.UpdateUI(GetCurrentUser().Children, true);
         }
 
-        private void UpdateAcknowledgeSection()
+        private void UpdateCommentsAndAcknowledgeSection()
         {
             UserData user = GetCurrentUser();
+            ctrlComments.Text = user.Comments;
+
             ctrlAck_Rule.Checked = user.Ack_Rule;
             ctrlAck_Medical.Checked = user.Ack_Medical;
             ctrlAck_Publish.Checked = user.Ack_Publish;
@@ -132,6 +134,9 @@ namespace ChineseSchool
             if (!ValidateFormData()) return;
 
             UserData user = GetCurrentUser();
+            
+            string comments = ctrlComments.Text.Trim();
+            user.Comments = Toolbox.IsEmpty(comments) ? "" : comments.Substring(0, (comments.Length > 2000) ? 2000 : comments.Length);
 
             SqlTransaction tran = GetSqlConnection().BeginTransaction();
 
@@ -173,7 +178,7 @@ namespace ChineseSchool
             }
 
             result = result &&
-                        CSAgent.UpdateUserAcknowledges(user.UserID, ctrlAck_Rule.Checked, ctrlAck_Medical.Checked, ctrlAck_Publish.Checked, GetSqlConnection(), tran);
+                        CSAgent.UpdateCommentsAndUserAcknowledges(user.UserID, user.Comments, ctrlAck_Rule.Checked, ctrlAck_Medical.Checked, ctrlAck_Publish.Checked, GetSqlConnection(), tran);
 
             Toolbox.EndTransaction(tran, result);
 

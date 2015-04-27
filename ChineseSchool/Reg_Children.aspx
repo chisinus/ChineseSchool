@@ -77,7 +77,7 @@
             LoadingText="Loading grades..."
             ServicePath="CSService.asmx"
             ServiceMethod="GetTeachersByGrade"
-            Category ="Teacher" />
+            Category ="Teacher" /> Teacher selections will be considered, but not guaranteed
     </div>
     <div class="SectionTitle">Other</div>
     <asp:Label runat="server" ID="ctrlMessage2" ViewStateMode="Disabled" CssClass="ErrorMessage"></asp:Label>
@@ -107,9 +107,13 @@
         <p> Required field</p>
     </div>
 
+    <div class="SectionTitle">Your Comments</div>
+    Please write down your comments, suggestions to the school, your kids' talents like music, recial, arts, etc. (Max 2000 characters)<br />
+    <asp:TextBox ID="ctrlComments" TextMode="Multiline" Columns="100" Rows="5" runat="server" />
+
     <div class="SectionTitle">Tuition and Refund Policy</div>
     Tuition is $450, books $30, registration fee $20.  Registration fee is waived before June 16. In addition, there is a parent-on-duty deposit $50 per student. It is refundable when parents fulfill their duty.  Each additional sibling gets 10% discount off the tuition.
-    Cancellation request received by 7/31/2013 (on site or email to lisoc2003@yahoo.com only) will be refunded the amount paid minus a $20 administrative fee for each student.  Cancellation received within the first 4 weeks of school year will be refunded $300 ($270 for siblings). No refund will be issued for any cancellation after 4 weeks of the start of school year.”
+    Cancellation request received by 7/31/2015 (on site or email to lisoc2003@yahoo.com only) will be refunded the amount paid minus a $20 administrative fee for each student.  Cancellation received within the first 4 weeks of school year will be refunded $300 ($270 for siblings). No refund will be issued for any cancellation after 4 weeks of the start of school year.”
 
     <div class="SectionTitle">Acknowledge</div>
     My child and I have read and agree that we will follow the Code of Conducts of LISOC, and the other school regulations. School website www.lisoc.org provides with the full contents.

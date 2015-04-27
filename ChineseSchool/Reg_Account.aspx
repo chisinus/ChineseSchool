@@ -21,13 +21,13 @@
         <p class="editor-label">Confirm Email Address: </p>
         <asp:TextBox runat="server" ID="ctrlEmail2" MaxLength ="100" CssClass="editor-field" />
     </div>
-    <div>
+    <div class="required">
         <p class="editor-label">Contact Phone: </p>
         <asp:TextBox runat="server" ID="ctrlPhone" MaxLength ="30" CssClass="editor-field" />
         <asp:TextBox runat="server" ID="ctrlPhoneExt" MaxLength ="10" CssClass="editor-field" />
     </div>
     <div class="SectionTitle">Address Information</div>
-    <div>
+    <div class="required">
         <p class="editor-label">Address1: </p>
         <asp:TextBox runat="server" ID="ctrlAddress1" MaxLength ="100" CssClass="editor-field" Width="400px" />
     </div>

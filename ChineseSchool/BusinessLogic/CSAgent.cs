@@ -43,6 +43,7 @@ namespace ChineseSchool.BusinessLogic
 													new SqlParameter("@PostalCode", user.PostalCode),
 													new SqlParameter("@EMGContact", user.EMGContact),
                                                     new SqlParameter("@EMGPhone", user.EMGPhone),
+                                                    new SqlParameter("@Comments", user.Comments),
 													new SqlParameter("@NewID", SqlDbType.Int) { Direction= ParameterDirection.Output}
 												};
 
@@ -255,13 +256,14 @@ namespace ChineseSchool.BusinessLogic
             return Toolbox.WriteDataToDB("DeleteUserVolunteer", "procUser_DeleteVolunteer", conn, parameters, tran);
         }
 
-        internal static bool UpdateUserAcknowledges(int userID, bool ackRule, bool actMedical, bool actPublish, SqlConnection conn, SqlTransaction tran)
+        internal static bool UpdateCommentsAndUserAcknowledges(int userID, string comments, bool ackRule, bool actMedical, bool actPublish, SqlConnection conn, SqlTransaction tran)
         {
             if ((userID <= 0) || (conn == null) || (tran == null)) return false;
 
             SqlParameter[] parameters = new SqlParameter[] 
 												{ 
                                                     new SqlParameter("@UserID", userID),
+                                                    new SqlParameter("@Comments", comments),
                                                     new SqlParameter("@AckRule", ackRule),
                                                     new SqlParameter("@AckMedial", actMedical),
                                                     new SqlParameter("@ActPublish", actPublish)

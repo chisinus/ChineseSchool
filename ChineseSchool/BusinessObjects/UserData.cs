@@ -28,6 +28,7 @@ namespace ChineseSchool.BusinessObjects
         public bool Ack_Rule { get; set; }
         public bool Ack_Medical { get; set; }
         public bool Ack_Publish { get; set; }
+        public string Comments { get; set; }
 
         public List<ChildData> Children { get; set; }
         public List<VolunteerData> Volunteers { get; set; }
@@ -62,6 +63,7 @@ namespace ChineseSchool.BusinessObjects
             Ack_Rule = Toolbox.GetDBValue<bool>(reader, "Ack_Rule");
             Ack_Medical = Toolbox.GetDBValue<bool>(reader, "Ack_Medical");
             Ack_Publish = Toolbox.GetDBValue<bool>(reader, "Ack_Publish");
+            Comments = Toolbox.GetDBValue<string>(reader, "Comments");
 
             AddItem(reader);
         }
